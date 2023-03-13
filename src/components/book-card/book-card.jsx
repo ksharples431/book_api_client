@@ -1,3 +1,10 @@
-export const BookCard = (props) => {
-  return <div>{props.book.title}</div>;
+export const BookCard = ({ book, onBookClick }) => {
+  return (
+    <div
+      onClick={() => {
+        onBookClick(book);
+      }}>
+      {book.title}
+    </div>
+  );
 };

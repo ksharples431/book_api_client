@@ -27284,68 +27284,91 @@ parcelHelpers.export(exports, "MainView", ()=>MainView);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _react = require("react");
 var _bookCard = require("../book-card/book-card");
+var _bookView = require("../book-view/book-view");
 var _s = $RefreshSig$();
 const MainView = ()=>{
     _s();
     const [books, setBooks] = (0, _react.useState)([
         {
             id: 1,
+            number: "Book 6",
             title: "Code Zero",
             author: "Jonathan Mayberry",
             genre: "Science Fiction",
-            series: "Joe Ledger"
+            series: "Joe Ledger",
+            image: "https://m.media-amazon.com/images/I/51SOvsjctML._SY344_BO1,204,203,200_.jpg"
         },
         {
             id: 2,
+            number: "Book 7",
             title: "Predator One",
             author: "Jonathan Mayberry",
             genre: "Science Fiction",
-            series: "Joe Ledger"
+            series: "Joe Ledger",
+            image: "https://m.media-amazon.com/images/I/51HXmNQyfDL._SY300_.jpg"
         },
         {
             id: 3,
+            number: "Book 9",
             title: "Dogs of War",
             author: "Jonathan Mayberry",
             genre: "Science Fiction",
-            series: "Joe Ledger"
+            series: "Joe Ledger",
+            image: "https://m.media-amazon.com/images/I/61SewB7GEZL._SY300_.jpg"
         },
         {
             id: 4,
+            number: "Book 1",
             title: "Patient Zero",
             author: "Jonathan Mayberry",
             genre: "Science Fiction",
-            series: "Joe Ledger"
+            series: "Joe Ledger",
+            image: "https://m.media-amazon.com/images/I/41hEdTkxJ3L._SY300_.jpg"
         },
         {
             id: 5,
+            number: "Book 5",
             title: "Extinction Machine",
             author: "Jonathan Mayberry",
             genre: "Science Fiction",
-            series: "Joe Ledger"
+            series: "Joe Ledger",
+            image: "https://m.media-amazon.com/images/I/51lIV+TNq2L._SY300_.jpg"
         }
     ]);
+    const [selectedBook, setSelectedBook] = (0, _react.useState)(null);
+    if (selectedBook) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _bookView.BookView), {
+        book: selectedBook,
+        onBackClick: ()=>setSelectedBook(null)
+    }, void 0, false, {
+        fileName: "src/components/main-view/main-view.jsx",
+        lineNumber: 59,
+        columnNumber: 7
+    }, undefined);
     if (books.length === 0) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         children: "The list is empty!"
     }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 44,
+        lineNumber: 67,
         columnNumber: 12
     }, undefined);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         children: books.map((book)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _bookCard.BookCard), {
-                book: book
-            }, void 0, false, {
+                book: book,
+                onBookClick: (newSelectedBook)=>{
+                    setSelectedBook(newSelectedBook);
+                }
+            }, book.id, false, {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 49,
-                columnNumber: 29
+                lineNumber: 73,
+                columnNumber: 9
             }, undefined))
     }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 48,
+        lineNumber: 71,
         columnNumber: 5
     }, undefined);
 };
-_s(MainView, "t94kkXpOiBTBCSZURxLYtPopvHE=");
+_s(MainView, "+TLQZkySNbCdHzIbpUlkmH5zDG4=");
 _c = MainView;
 var _c;
 $RefreshReg$(_c, "MainView");
@@ -27355,7 +27378,7 @@ $RefreshReg$(_c, "MainView");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","@parcel/transformer-js/src/esmodule-helpers.js":"gdXVH","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"89fB0","react":"21dqq","../book-card/book-card":"8FC36"}],"gdXVH":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","@parcel/transformer-js/src/esmodule-helpers.js":"gdXVH","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"89fB0","react":"21dqq","../book-card/book-card":"8FC36","../book-view/book-view":"6u6eS"}],"gdXVH":[function(require,module,exports) {
 exports.interopDefault = function(a) {
     return a && a.__esModule ? a : {
         default: a
@@ -27396,13 +27419,16 @@ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "BookCard", ()=>BookCard);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
-const BookCard = (props)=>{
+const BookCard = ({ book , onBookClick  })=>{
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        children: props.book.title
+        onClick: ()=>{
+            onBookClick(book);
+        },
+        children: book.title
     }, void 0, false, {
         fileName: "src/components/book-card/book-card.jsx",
-        lineNumber: 2,
-        columnNumber: 10
+        lineNumber: 3,
+        columnNumber: 5
     }, undefined);
 };
 _c = BookCard;
@@ -27410,6 +27436,145 @@ var _c;
 $RefreshReg$(_c, "BookCard");
 
   $parcel$ReactRefreshHelpers$1994.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"iTorj","@parcel/transformer-js/src/esmodule-helpers.js":"gdXVH","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"89fB0"}],"6u6eS":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$1e99 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$1e99.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "BookView", ()=>BookView);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+const BookView = ({ book , onBackClick  })=>{
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+        children: [
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
+                    src: book.image
+                }, void 0, false, {
+                    fileName: "src/components/book-view/book-view.jsx",
+                    lineNumber: 5,
+                    columnNumber: 9
+                }, undefined)
+            }, void 0, false, {
+                fileName: "src/components/book-view/book-view.jsx",
+                lineNumber: 4,
+                columnNumber: 7
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                children: [
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                        children: "Title: "
+                    }, void 0, false, {
+                        fileName: "src/components/book-view/book-view.jsx",
+                        lineNumber: 8,
+                        columnNumber: 9
+                    }, undefined),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                        children: book.title
+                    }, void 0, false, {
+                        fileName: "src/components/book-view/book-view.jsx",
+                        lineNumber: 9,
+                        columnNumber: 9
+                    }, undefined)
+                ]
+            }, void 0, true, {
+                fileName: "src/components/book-view/book-view.jsx",
+                lineNumber: 7,
+                columnNumber: 7
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                children: [
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                        children: "Author: "
+                    }, void 0, false, {
+                        fileName: "src/components/book-view/book-view.jsx",
+                        lineNumber: 12,
+                        columnNumber: 9
+                    }, undefined),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                        children: book.author
+                    }, void 0, false, {
+                        fileName: "src/components/book-view/book-view.jsx",
+                        lineNumber: 13,
+                        columnNumber: 9
+                    }, undefined)
+                ]
+            }, void 0, true, {
+                fileName: "src/components/book-view/book-view.jsx",
+                lineNumber: 11,
+                columnNumber: 7
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                children: [
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                        children: "Series: "
+                    }, void 0, false, {
+                        fileName: "src/components/book-view/book-view.jsx",
+                        lineNumber: 16,
+                        columnNumber: 9
+                    }, undefined),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                        children: book.series
+                    }, void 0, false, {
+                        fileName: "src/components/book-view/book-view.jsx",
+                        lineNumber: 17,
+                        columnNumber: 9
+                    }, undefined)
+                ]
+            }, void 0, true, {
+                fileName: "src/components/book-view/book-view.jsx",
+                lineNumber: 15,
+                columnNumber: 7
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                children: [
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                        children: "Series Number: "
+                    }, void 0, false, {
+                        fileName: "src/components/book-view/book-view.jsx",
+                        lineNumber: 20,
+                        columnNumber: 9
+                    }, undefined),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                        children: book.number
+                    }, void 0, false, {
+                        fileName: "src/components/book-view/book-view.jsx",
+                        lineNumber: 21,
+                        columnNumber: 9
+                    }, undefined)
+                ]
+            }, void 0, true, {
+                fileName: "src/components/book-view/book-view.jsx",
+                lineNumber: 19,
+                columnNumber: 7
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                onClick: onBackClick,
+                children: "Back"
+            }, void 0, false, {
+                fileName: "src/components/book-view/book-view.jsx",
+                lineNumber: 23,
+                columnNumber: 7
+            }, undefined)
+        ]
+    }, void 0, true, {
+        fileName: "src/components/book-view/book-view.jsx",
+        lineNumber: 3,
+        columnNumber: 5
+    }, undefined);
+};
+_c = BookView;
+var _c;
+$RefreshReg$(_c, "BookView");
+
+  $parcel$ReactRefreshHelpers$1e99.postlude(module);
 } finally {
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
