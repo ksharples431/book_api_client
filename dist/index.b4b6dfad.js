@@ -27282,53 +27282,71 @@ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "MainView", ()=>MainView);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
+var _react = require("react");
+var _s = $RefreshSig$();
 const MainView = ()=>{
-    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
-        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-            children: [
-                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                    children: "Eloquent JavaScript"
-                }, void 0, false, {
-                    fileName: "src/components/main-view/main-view.jsx",
-                    lineNumber: 5,
-                    columnNumber: 7
-                }, undefined),
-                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                    children: "Mastering JavaScript Functional Programming"
-                }, void 0, false, {
-                    fileName: "src/components/main-view/main-view.jsx",
-                    lineNumber: 6,
-                    columnNumber: 7
-                }, undefined),
-                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                    children: "JavaScript: The Good Parts"
-                }, void 0, false, {
-                    fileName: "src/components/main-view/main-view.jsx",
-                    lineNumber: 7,
-                    columnNumber: 7
-                }, undefined),
-                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                    children: "JavaScript: The Definitive Guide"
-                }, void 0, false, {
-                    fileName: "src/components/main-view/main-view.jsx",
-                    lineNumber: 8,
-                    columnNumber: 7
-                }, undefined),
-                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                    children: "The Road to React"
-                }, void 0, false, {
-                    fileName: "src/components/main-view/main-view.jsx",
-                    lineNumber: 9,
-                    columnNumber: 7
-                }, undefined)
-            ]
-        }, void 0, true, {
-            fileName: "src/components/main-view/main-view.jsx",
-            lineNumber: 4,
-            columnNumber: 5
-        }, undefined)
-    }, void 0, false);
+    _s();
+    const [books, setBooks] = (0, _react.useState)([
+        {
+            id: 1,
+            title: "Code Zero",
+            author: "Jonathan Mayberry",
+            genre: "Science Fiction",
+            series: "Joe Ledger"
+        },
+        {
+            id: 2,
+            title: "Predator One",
+            author: "Jonathan Mayberry",
+            genre: "Science Fiction",
+            series: "Joe Ledger"
+        },
+        {
+            id: 3,
+            title: "Dogs of War",
+            author: "Jonathan Mayberry",
+            genre: "Science Fiction",
+            series: "Joe Ledger"
+        },
+        {
+            id: 4,
+            title: "Patient Zero",
+            author: "Jonathan Mayberry",
+            genre: "Science Fiction",
+            series: "Joe Ledger"
+        },
+        {
+            id: 5,
+            title: "Extinction Machine",
+            author: "Jonathan Mayberry",
+            genre: "Science Fiction",
+            series: "Joe Ledger"
+        }
+    ]);
+    if (books.length === 0) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+        children: "The list is empty!"
+    }, void 0, false, {
+        fileName: "src/components/main-view/main-view.jsx",
+        lineNumber: 43,
+        columnNumber: 12
+    }, undefined);
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+        children: books.map((book)=>{
+            return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                children: book.title
+            }, book.id, false, {
+                fileName: "src/components/main-view/main-view.jsx",
+                lineNumber: 49,
+                columnNumber: 16
+            }, undefined);
+        })
+    }, void 0, false, {
+        fileName: "src/components/main-view/main-view.jsx",
+        lineNumber: 47,
+        columnNumber: 5
+    }, undefined);
 };
+_s(MainView, "t94kkXpOiBTBCSZURxLYtPopvHE=");
 _c = MainView;
 var _c;
 $RefreshReg$(_c, "MainView");
@@ -27338,7 +27356,7 @@ $RefreshReg$(_c, "MainView");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","@parcel/transformer-js/src/esmodule-helpers.js":"gdXVH","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"89fB0"}],"gdXVH":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","@parcel/transformer-js/src/esmodule-helpers.js":"gdXVH","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"89fB0","react":"21dqq"}],"gdXVH":[function(require,module,exports) {
 exports.interopDefault = function(a) {
     return a && a.__esModule ? a : {
         default: a
