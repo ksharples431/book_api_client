@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { BookCard } from '../book-card/book-card';
 
 export const MainView = () => {
   const [books, setBooks] = useState([
@@ -45,9 +46,7 @@ export const MainView = () => {
 
   return (
     <div>
-      {books.map((book) => {
-        return <div key={book.id}>{book.title}</div>;
-      })}
+      {books.map((book) => (<BookCard book={book}/>))}
     </div>
   );
 };
