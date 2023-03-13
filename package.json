@@ -1,0 +1,18 @@
+{
+  "name": "book_api_client",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ksharples431/book_api_client.git"
+  },
+  "author": "Katie Sharples",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ksharples431/book_api_client/issues"
+  },
+  "homepage": "https://github.com/ksharples431/book_api_client#readme"
+}
