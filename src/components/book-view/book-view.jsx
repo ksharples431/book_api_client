@@ -1,3 +1,5 @@
+import './book-view.scss';
+
 export const BookView = ({ book, onBackClick }) => {
   return (
     <div>

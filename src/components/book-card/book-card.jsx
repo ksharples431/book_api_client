@@ -1,3 +1,7 @@
+import PropTypes from 'prop-types';
+
+import './book-card.scss';
+
 export const BookCard = ({ book, onBookClick }) => {
   return (
     <div
