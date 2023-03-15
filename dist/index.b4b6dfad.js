@@ -27290,53 +27290,6 @@ var _mainViewScss = require("./main-view.scss");
 var _s = $RefreshSig$();
 const MainView = ()=>{
     _s();
-    const [books, setBooks] = (0, _react.useState)([
-        {
-            id: 1,
-            number: "Book 6",
-            title: "Code Zero",
-            author: "Jonathan Mayberry",
-            genre: "Science Fiction",
-            series: "Joe Ledger",
-            image: "https://m.media-amazon.com/images/I/51SOvsjctML._SY344_BO1,204,203,200_.jpg"
-        },
-        {
-            id: 2,
-            number: "Book 7",
-            title: "Predator One",
-            author: "Jonathan Mayberry",
-            genre: "Science Fiction",
-            series: "Joe Ledger",
-            image: "https://m.media-amazon.com/images/I/51HXmNQyfDL._SY300_.jpg"
-        },
-        {
-            id: 3,
-            number: "Book 9",
-            title: "Dogs of War",
-            author: "Jonathan Mayberry",
-            genre: "Science Fiction",
-            series: "Joe Ledger",
-            image: "https://m.media-amazon.com/images/I/61SewB7GEZL._SY300_.jpg"
-        },
-        {
-            id: 4,
-            number: "Book 1",
-            title: "Patient Zero",
-            author: "Jonathan Mayberry",
-            genre: "Science Fiction",
-            series: "Joe Ledger",
-            image: "https://m.media-amazon.com/images/I/41hEdTkxJ3L._SY300_.jpg"
-        },
-        {
-            id: 5,
-            number: "Book 5",
-            title: "Extinction Machine",
-            author: "Jonathan Mayberry",
-            genre: "Science Fiction",
-            series: "Joe Ledger",
-            image: "https://m.media-amazon.com/images/I/51lIV+TNq2L._SY300_.jpg"
-        }
-    ]);
     const storedUser = JSON.parse(localStorage.getItem("user"));
     const storedToken = localStorage.getItem("token");
     const [user, setUser] = (0, _react.useState)(storedUser ? storedUser : null);
@@ -27348,14 +27301,14 @@ const MainView = ()=>{
         onBackClick: ()=>setSelectedBook(null)
     }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 67,
+        lineNumber: 18,
         columnNumber: 7
     }, undefined);
     if (books.length === 0) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         children: "The list is empty!"
     }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 75,
+        lineNumber: 26,
         columnNumber: 12
     }, undefined);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -27367,7 +27320,7 @@ const MainView = ()=>{
                     }
                 }, book.id, false, {
                     fileName: "src/components/main-view/main-view.jsx",
-                    lineNumber: 81,
+                    lineNumber: 32,
                     columnNumber: 9
                 }, undefined)),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -27379,17 +27332,17 @@ const MainView = ()=>{
                 children: "Logout"
             }, void 0, false, {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 89,
+                lineNumber: 40,
                 columnNumber: 7
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 79,
+        lineNumber: 30,
         columnNumber: 5
     }, undefined);
 };
-_s(MainView, "8Ho2DqnOzIdFXJCFTZQuvKrC60U=");
+_s(MainView, "a1O8w2SBOne3mpgwz4Ix9UThP3Y=");
 _c = MainView;
 var _c;
 $RefreshReg$(_c, "MainView");
