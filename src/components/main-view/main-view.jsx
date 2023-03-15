@@ -14,7 +14,13 @@ export const MainView = () => {
   const [selectedBook, setSelectedBook] = useState(null);
 
   useEffect(() => {
-    fetch('https://my-books-series-tracker.herokuapp.com/books')
+    if (!token) {
+      return;
+    }
+
+    fetch('https://my-books-series-tracker.herokuapp.com/books', {
+      headers: { Authorization: `Bearer ${token}` },
+    })
       .then((response) => response.json())
       .then((data) => {
         const booksFromApi = data.map((book) => {
@@ -36,7 +42,18 @@ export const MainView = () => {
 
         setBooks(booksFromApi);
       });
-  }, []);
+  }, [token]);
+
+  if (!user) {
+    return (
+      <LoginView
+        onLoggedIn={(user, token) => {
+          setUser(user);
+          setToken(token);
+        }}
+      />
+    );
+  }
 
   if (selectedBook) {
     return (
