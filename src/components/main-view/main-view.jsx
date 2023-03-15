@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { BookCard } from '../book-card/book-card';
 import { BookView } from '../book-view/book-view';
 import { LoginView } from '../login-view/login-view';
+import { SignupView } from '../signup-view/signup-view';
 
 import './main-view.scss';
 
@@ -46,12 +47,15 @@ export const MainView = () => {
 
   if (!user) {
     return (
+      <div>
       <LoginView
         onLoggedIn={(user, token) => {
           setUser(user);
           setToken(token);
         }}
       />
+      <SignupView/>
+      </div>
     );
   }
 
