@@ -27331,23 +27331,22 @@ const MainView = ()=>{
         }
     }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 102,
+        lineNumber: 50,
         columnNumber: 7
     }, undefined);
-    //Stashed changes
     if (selectedBook) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _bookView.BookView), {
         book: selectedBook,
         onBackClick: ()=>setSelectedBook(null)
     }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 114,
+        lineNumber: 61,
         columnNumber: 7
     }, undefined);
     if (books.length === 0) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         children: "The list is empty!"
     }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 122,
+        lineNumber: 69,
         columnNumber: 12
     }, undefined);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -27359,7 +27358,7 @@ const MainView = ()=>{
                     }
                 }, book.id, false, {
                     fileName: "src/components/main-view/main-view.jsx",
-                    lineNumber: 128,
+                    lineNumber: 75,
                     columnNumber: 9
                 }, undefined)),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -27371,17 +27370,17 @@ const MainView = ()=>{
                 children: "Logout"
             }, void 0, false, {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 136,
+                lineNumber: 83,
                 columnNumber: 7
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 126,
+        lineNumber: 73,
         columnNumber: 5
     }, undefined);
 };
-_s(MainView, "3dkJyHJxcN6vA2LzMblPF9es6R0=");
+_s(MainView, "KWQKKD7lEUXT1FEY3U3YXueOVfA=");
 _c = MainView;
 var _c;
 $RefreshReg$(_c, "MainView");
