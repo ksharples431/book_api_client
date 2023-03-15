@@ -11,7 +11,6 @@ export const BookCard = ({ book, onBookClick }) => {
     </div>
   );
 };
-
 BookCard.propTypes = {
   book: PropTypes.shape({
     image: PropTypes.string,
@@ -25,6 +24,7 @@ BookCard.propTypes = {
     // availability: PropTypes.array,
     read: PropTypes.bool,
     favorite: PropTypes.bool,
+
   }).isRequired,
-  onBookClick: PropTypes.func.isRequired,
-};
+  onBookClick: PropTypes.func.isRequired
+}
