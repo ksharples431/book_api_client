@@ -15,12 +15,32 @@ export const BookView = ({ book, onBackClick }) => {
         <span>{book.author}</span>
       </div>
       <div>
+        <span>Genre: </span>
+        <span>{book.genre}</span>
+      </div>
+      <div>
         <span>Series: </span>
         <span>{book.series}</span>
       </div>
       <div>
-        <span>Series Number: </span>
+        <span>Book: </span>
         <span>{book.number}</span>
+      </div>
+      <div>
+        <span>Description: </span>
+        <span>{book.description}</span>
+      </div>
+      <div>
+        <span>Owned: </span>
+        <span>{book.owned}</span>
+      </div>
+      <div>
+        <span>Read: </span>
+        <span>{book.read}</span>
+      </div>
+      <div>
+        <span>Favorite: </span>
+        <span>{book.favorite}</span>
       </div>
       <button onClick={onBackClick}>Back</button>
     </div>

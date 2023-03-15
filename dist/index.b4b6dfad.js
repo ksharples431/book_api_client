@@ -27290,63 +27290,72 @@ var _mainViewScss = require("./main-view.scss");
 var _s = $RefreshSig$();
 const MainView = ()=>{
     _s();
+    const [books, setBooks] = (0, _react.useState)([
+        {
+            id: 1,
+            number: "Book 6",
+            title: "Code Zero",
+            author: "Jonathan Mayberry",
+            genre: "Science Fiction",
+            series: "Joe Ledger",
+            image: "https://m.media-amazon.com/images/I/51SOvsjctML._SY344_BO1,204,203,200_.jpg"
+        },
+        {
+            id: 2,
+            number: "Book 7",
+            title: "Predator One",
+            author: "Jonathan Mayberry",
+            genre: "Science Fiction",
+            series: "Joe Ledger",
+            image: "https://m.media-amazon.com/images/I/51HXmNQyfDL._SY300_.jpg"
+        },
+        {
+            id: 3,
+            number: "Book 9",
+            title: "Dogs of War",
+            author: "Jonathan Mayberry",
+            genre: "Science Fiction",
+            series: "Joe Ledger",
+            image: "https://m.media-amazon.com/images/I/61SewB7GEZL._SY300_.jpg"
+        },
+        {
+            id: 4,
+            number: "Book 1",
+            title: "Patient Zero",
+            author: "Jonathan Mayberry",
+            genre: "Science Fiction",
+            series: "Joe Ledger",
+            image: "https://m.media-amazon.com/images/I/41hEdTkxJ3L._SY300_.jpg"
+        },
+        {
+            id: 5,
+            number: "Book 5",
+            title: "Extinction Machine",
+            author: "Jonathan Mayberry",
+            genre: "Science Fiction",
+            series: "Joe Ledger",
+            image: "https://m.media-amazon.com/images/I/51lIV+TNq2L._SY300_.jpg"
+        }
+    ]);
     const storedUser = JSON.parse(localStorage.getItem("user"));
     const storedToken = localStorage.getItem("token");
     const [user, setUser] = (0, _react.useState)(storedUser ? storedUser : null);
     const [token, setToken] = (0, _react.useState)(storedToken ? storedToken : null);
     const [books, setBooks] = (0, _react.useState)([]);
     const [selectedBook, setSelectedBook] = (0, _react.useState)(null);
-    useEffect(()=>{
-        if (!token) return;
-        fetch("https://my-books-series-tracker.herokuapp.com/books", {
-            headers: {
-                Authorization: `Bearer ${token}`
-            }
-        }).then((response)=>response.json()).then((data)=>{
-            const booksFromApi = data.map((book)=>{
-                return {
-                    id: book._id,
-                    image: book.image,
-                    title: book.title,
-                    author: book.author,
-                    genre: book.genre,
-                    series: book.series,
-                    number: book.number,
-                    description: book.description,
-                    owned: book.owned,
-                    // availibility: book.availibility,
-                    read: book.read,
-                    favorite: book.favorite
-                };
-            });
-            setBooks(booksFromApi);
-        });
-    }, [
-        token
-    ]);
-    if (!user) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _loginView.LoginView), {
-        onLoggedIn: (user, token)=>{
-            setUser(user);
-            setToken(token);
-        }
-    }, void 0, false, {
-        fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 50,
-        columnNumber: 7
-    }, undefined);
     if (selectedBook) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _bookView.BookView), {
         book: selectedBook,
         onBackClick: ()=>setSelectedBook(null)
     }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 61,
+        lineNumber: 67,
         columnNumber: 7
     }, undefined);
     if (books.length === 0) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         children: "The list is empty!"
     }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 69,
+        lineNumber: 75,
         columnNumber: 12
     }, undefined);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -27358,7 +27367,7 @@ const MainView = ()=>{
                     }
                 }, book.id, false, {
                     fileName: "src/components/main-view/main-view.jsx",
-                    lineNumber: 75,
+                    lineNumber: 81,
                     columnNumber: 9
                 }, undefined)),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -27370,17 +27379,17 @@ const MainView = ()=>{
                 children: "Logout"
             }, void 0, false, {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 83,
+                lineNumber: 89,
                 columnNumber: 7
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 73,
+        lineNumber: 79,
         columnNumber: 5
     }, undefined);
 };
-_s(MainView, "KWQKKD7lEUXT1FEY3U3YXueOVfA=");
+_s(MainView, "8Ho2DqnOzIdFXJCFTZQuvKrC60U=");
 _c = MainView;
 var _c;
 $RefreshReg$(_c, "MainView");
@@ -27442,11 +27451,27 @@ const BookCard = ({ book , onBookClick  })=>{
         children: book.title
     }, void 0, false, {
         fileName: "src/components/book-card/book-card.jsx",
-        lineNumber: 7,
+        lineNumber: 6,
         columnNumber: 5
     }, undefined);
 };
 _c = BookCard;
+BookCard.propTypes = {
+    book: (0, _propTypesDefault.default).shape({
+        image: (0, _propTypesDefault.default).string,
+        title: (0, _propTypesDefault.default).string.isRequired,
+        author: (0, _propTypesDefault.default).string.isRequired,
+        genre: (0, _propTypesDefault.default).string,
+        series: (0, _propTypesDefault.default).string,
+        number: (0, _propTypesDefault.default).number,
+        description: (0, _propTypesDefault.default).string,
+        owned: (0, _propTypesDefault.default).bool,
+        // availability: PropTypes.array,
+        read: (0, _propTypesDefault.default).bool,
+        favorite: (0, _propTypesDefault.default).bool
+    }).isRequired,
+    onBookClick: (0, _propTypesDefault.default).func.isRequired
+};
 var _c;
 $RefreshReg$(_c, "BookCard");
 
@@ -28277,14 +28302,14 @@ const BookView = ({ book , onBackClick  })=>{
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                 children: [
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                        children: "Series: "
+                        children: "Genre: "
                     }, void 0, false, {
                         fileName: "src/components/book-view/book-view.jsx",
                         lineNumber: 18,
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                        children: book.series
+                        children: book.genre
                     }, void 0, false, {
                         fileName: "src/components/book-view/book-view.jsx",
                         lineNumber: 19,
@@ -28299,14 +28324,14 @@ const BookView = ({ book , onBackClick  })=>{
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                 children: [
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                        children: "Series Number: "
+                        children: "Series: "
                     }, void 0, false, {
                         fileName: "src/components/book-view/book-view.jsx",
                         lineNumber: 22,
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                        children: book.number
+                        children: book.series
                     }, void 0, false, {
                         fileName: "src/components/book-view/book-view.jsx",
                         lineNumber: 23,
@@ -28318,12 +28343,122 @@ const BookView = ({ book , onBackClick  })=>{
                 lineNumber: 21,
                 columnNumber: 7
             }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                children: [
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                        children: "Book: "
+                    }, void 0, false, {
+                        fileName: "src/components/book-view/book-view.jsx",
+                        lineNumber: 26,
+                        columnNumber: 9
+                    }, undefined),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                        children: book.number
+                    }, void 0, false, {
+                        fileName: "src/components/book-view/book-view.jsx",
+                        lineNumber: 27,
+                        columnNumber: 9
+                    }, undefined)
+                ]
+            }, void 0, true, {
+                fileName: "src/components/book-view/book-view.jsx",
+                lineNumber: 25,
+                columnNumber: 7
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                children: [
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                        children: "Description: "
+                    }, void 0, false, {
+                        fileName: "src/components/book-view/book-view.jsx",
+                        lineNumber: 30,
+                        columnNumber: 9
+                    }, undefined),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                        children: book.description
+                    }, void 0, false, {
+                        fileName: "src/components/book-view/book-view.jsx",
+                        lineNumber: 31,
+                        columnNumber: 9
+                    }, undefined)
+                ]
+            }, void 0, true, {
+                fileName: "src/components/book-view/book-view.jsx",
+                lineNumber: 29,
+                columnNumber: 7
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                children: [
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                        children: "Owned: "
+                    }, void 0, false, {
+                        fileName: "src/components/book-view/book-view.jsx",
+                        lineNumber: 34,
+                        columnNumber: 9
+                    }, undefined),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                        children: book.owned
+                    }, void 0, false, {
+                        fileName: "src/components/book-view/book-view.jsx",
+                        lineNumber: 35,
+                        columnNumber: 9
+                    }, undefined)
+                ]
+            }, void 0, true, {
+                fileName: "src/components/book-view/book-view.jsx",
+                lineNumber: 33,
+                columnNumber: 7
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                children: [
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                        children: "Read: "
+                    }, void 0, false, {
+                        fileName: "src/components/book-view/book-view.jsx",
+                        lineNumber: 38,
+                        columnNumber: 9
+                    }, undefined),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                        children: book.read
+                    }, void 0, false, {
+                        fileName: "src/components/book-view/book-view.jsx",
+                        lineNumber: 39,
+                        columnNumber: 9
+                    }, undefined)
+                ]
+            }, void 0, true, {
+                fileName: "src/components/book-view/book-view.jsx",
+                lineNumber: 37,
+                columnNumber: 7
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                children: [
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                        children: "Favorite: "
+                    }, void 0, false, {
+                        fileName: "src/components/book-view/book-view.jsx",
+                        lineNumber: 42,
+                        columnNumber: 9
+                    }, undefined),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                        children: book.favorite
+                    }, void 0, false, {
+                        fileName: "src/components/book-view/book-view.jsx",
+                        lineNumber: 43,
+                        columnNumber: 9
+                    }, undefined)
+                ]
+            }, void 0, true, {
+                fileName: "src/components/book-view/book-view.jsx",
+                lineNumber: 41,
+                columnNumber: 7
+            }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
                 onClick: onBackClick,
                 children: "Back"
             }, void 0, false, {
                 fileName: "src/components/book-view/book-view.jsx",
-                lineNumber: 25,
+                lineNumber: 45,
                 columnNumber: 7
             }, undefined)
         ]
