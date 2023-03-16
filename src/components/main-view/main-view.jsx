@@ -74,16 +74,14 @@ export const MainView = () => {
           ))}
         </>
       )}
-      <Button
+      {/* <Button 
         onClick={() => {
           setUser(null);
           setToken(null);
           localStorage.clear();
         }}>
         Logout
-      </Button>
+      </Button> */}
     </Row>
   );
 };
-
-
