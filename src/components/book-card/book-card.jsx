@@ -5,7 +5,7 @@ import './book-card.scss';
 
 export const BookCard = ({ book, onBookClick }) => {
   return (
-    <Card>
+    <Card className="h-100">
       <Card.Img variant="top" src={book.image} />
       <Card.Body>
         <Card.Title>{book.title}</Card.Title>
