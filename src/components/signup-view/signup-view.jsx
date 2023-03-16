@@ -5,32 +5,34 @@ import './signup-view.scss';
 export const SignupView = ({ onLoggedIn }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [email, setEmail] = useState('');
+  const [birthday, setBirthday] = useState('');
+
   const handleSubmit = (event) => {
     event.preventDefault();
 
     const data = {
       Username: username,
       Password: password,
+      Email: email,
+      Birthday: birthday
     };
 
-    fetch('https://my-books-series-tracker.herokuapp.com/login', {
+    fetch('https://my-books-series-tracker.herokuapp.com/users', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(data),
     })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log('Login response: ', data);
-        if (data.user) {
-          localStorage.setItem('user', JSON.stringify(data.user));
-          localStorage.setItem('token', data.token);
-          onLoggedIn(data.user, data.token);
-        } else {
-          alert('No such user');
-        }
-      })
+      .then((response) => {
+      if (response.ok) {
+        alert("Signup successful");
+        window.location.reload();
+      } else {
+        alert("Signup failed");
+      }
+    })
       .catch((e) => {
         alert('Something went wrong');
       });
@@ -45,6 +47,7 @@ export const SignupView = ({ onLoggedIn }) => {
           value={username}
           onChange={(e) => setUsername(e.target.value)}
           required
+          minLength="3"
         />
       </label>
       <label>
@@ -53,6 +56,24 @@ export const SignupView = ({ onLoggedIn }) => {
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
+          required
+        />
+      </label>
+      <label>
+        Email:
+        <input
+          type="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          required
+        />
+      </label>
+      <label>
+        Birthday:
+        <input
+          type="date"
+          value={birthday}
+          onChange={(e) => setBirthday(e.target.value)}
           required
         />
       </label>

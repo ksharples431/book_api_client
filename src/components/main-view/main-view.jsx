@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { BookCard } from '../book-card/book-card';
 import { BookView } from '../book-view/book-view';
 import { LoginView } from '../login-view/login-view';
+import { SignupView } from '../signup-view/signup-view';
 
 import './main-view.scss';
 
@@ -14,7 +15,13 @@ export const MainView = () => {
   const [selectedBook, setSelectedBook] = useState(null);
 
   useEffect(() => {
-    fetch('https://my-books-series-tracker.herokuapp.com/books')
+    if (!token) {
+      return;
+    }
+
+    fetch('https://my-books-series-tracker.herokuapp.com/books', {
+      headers: { Authorization: `Bearer ${token}` },
+    })
       .then((response) => response.json())
       .then((data) => {
         const booksFromApi = data.map((book) => {
@@ -36,7 +43,21 @@ export const MainView = () => {
 
         setBooks(booksFromApi);
       });
-  }, []);
+  }, [token]);
+
+  if (!user) {
+    return (
+      <div>
+      <LoginView
+        onLoggedIn={(user, token) => {
+          setUser(user);
+          setToken(token);
+        }}
+      />
+      <SignupView/>
+      </div>
+    );
+  }
 
   if (selectedBook) {
     return (
