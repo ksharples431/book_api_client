@@ -3,9 +3,10 @@ import { BookCard } from '../book-card/book-card';
 import { BookView } from '../book-view/book-view';
 import { LoginView } from '../login-view/login-view';
 import { SignupView } from '../signup-view/signup-view';
+import { NavigationBar } from '../navigation-bar/navigation-bar';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import Button from 'react-bootstrap/Button';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 
 import './main-view.scss';
 
@@ -15,7 +16,6 @@ export const MainView = () => {
   const [user, setUser] = useState(storedUser ? storedUser : null);
   const [token, setToken] = useState(storedToken ? storedToken : null);
   const [books, setBooks] = useState([]);
-  const [selectedBook, setSelectedBook] = useState(null);
 
   useEffect(() => {
     fetch('https://my-books-series-tracker.herokuapp.com/books', {
@@ -44,44 +44,82 @@ export const MainView = () => {
   }, [token]);
 
   return (
-    <Row className="justify-content-md-center">
-      {!user ? (
-        <Col md={5}>
-          <LoginView onLoggedIn={(user) => setUser(user)} />
-          or
-          <SignupView />
-        </Col>
-      ) : selectedBook ? (
-        <Col md={8}>
-          <BookView
-            book={selectedBook}
-            onBackClick={() => setSelectedBook(null)}
-          />
-        </Col>
-      ) : books.length === 0 ? (
-        <div>The list is empty!</div>
-      ) : (
-        <>
-          {books.map((book) => (
-            <Col className="mb-5" key={book.id} md={3}>
-              <BookCard
-                book={book}
-                onBookClick={(newSelectedBook) => {
-                  setSelectedBook(newSelectedBook);
-                }}
-              />
-            </Col>
-          ))}
-        </>
-      )}
-      <Button 
-        onClick={() => {
+    <BrowserRouter>
+      <NavigationBar
+        user={user}
+        onLoggedOut={() => {
           setUser(null);
           setToken(null);
           localStorage.clear();
-        }}>
-        Logout
-      </Button>
-    </Row>
+        }}/>
+      <Row className="justify-content-md-center">
+        <Routes>
+          <Route
+            path="/signup"
+            element={
+              <>
+                {user ? (
+                  <Navigate to="/" />
+                ) : (
+                  <Col md={5}>
+                    <SignupView />
+                  </Col>
+                )}
+              </>
+            }
+          />
+          <Route
+            path="/login"
+            element={
+              <>
+                {user ? (
+                  <Navigate to="/" />
+                ) : (
+                  <Col md={5}>
+                    <LoginView onLoggedIn={(user) => setUser(user)} />
+                  </Col>
+                )}
+              </>
+            }
+          />
+          <Route
+            path="/books/:bookId"
+            element={
+              <>
+                {!user ? (
+                  <Navigate to="/login" replace />
+                ) : books.length === 0 ? (
+                  <Col>The list is empty!</Col>
+                ) : (
+                  <Col md={8}>
+                    <BookView books={books} />
+                  </Col>
+                )}
+              </>
+            }
+          />
+          <Route
+            path="/"
+            element={
+              <>
+                {!user ? (
+                  <Navigate to="/login" replace />
+                ) : books.length === 0 ? (
+                  <Col>The list is empty!</Col>
+                ) : (
+                  <>
+                    {books.map((book) => (
+                      <Col className="mb-4" key={book.id} md={3}>
+                        <BookCard book={book} />
+                      </Col>
+                    ))}
+                  </>
+                )}
+              </>
+            }
+          />
+        </Routes>
+      </Row>
+    </BrowserRouter>
   );
 };
