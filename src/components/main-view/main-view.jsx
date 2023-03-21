@@ -3,6 +3,9 @@ import { BookCard } from '../book-card/book-card';
 import { BookView } from '../book-view/book-view';
 import { LoginView } from '../login-view/login-view';
 import { SignupView } from '../signup-view/signup-view';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import Button from 'react-bootstrap/Button';
 
 import './main-view.scss';
 
@@ -15,10 +18,6 @@ export const MainView = () => {
   const [selectedBook, setSelectedBook] = useState(null);
 
   useEffect(() => {
-    if (!token) {
-      return;
-    }
-
     fetch('https://my-books-series-tracker.herokuapp.com/books', {
       headers: { Authorization: `Bearer ${token}` },
     })
@@ -40,58 +39,49 @@ export const MainView = () => {
             favorite: book.favorite,
           };
         });
-
         setBooks(booksFromApi);
       });
   }, [token]);
 
-  if (!user) {
-    return (
-      <div>
-      <LoginView
-        onLoggedIn={(user, token) => {
-          setUser(user);
-          setToken(token);
-        }}
-      />
-      <SignupView/>
-      </div>
-    );
-  }
-
-  if (selectedBook) {
-    return (
-      <BookView
-        book={selectedBook}
-        onBackClick={() => setSelectedBook(null)}
-      />
-    );
-  }
-
-  if (books.length === 0) {
-    return <div>The list is empty!</div>;
-  }
-
   return (
-    <div>
-      {books.map((book) => (
-        <BookCard
-          key={book.id}
-          book={book}
-          onBookClick={(newSelectedBook) => {
-            setSelectedBook(newSelectedBook);
-          }}
-        />
-      ))}
-      <button
+    <Row className="justify-content-md-center">
+      {!user ? (
+        <Col md={5}>
+          <LoginView onLoggedIn={(user) => setUser(user)} />
+          or
+          <SignupView />
+        </Col>
+      ) : selectedBook ? (
+        <Col md={8}>
+          <BookView
+            book={selectedBook}
+            onBackClick={() => setSelectedBook(null)}
+          />
+        </Col>
+      ) : books.length === 0 ? (
+        <div>The list is empty!</div>
+      ) : (
+        <>
+          {books.map((book) => (
+            <Col className="mb-5" key={book.id} md={3}>
+              <BookCard
+                book={book}
+                onBookClick={(newSelectedBook) => {
+                  setSelectedBook(newSelectedBook);
+                }}
+              />
+            </Col>
+          ))}
+        </>
+      )}
+      {/* <Button 
         onClick={() => {
           setUser(null);
           setToken(null);
           localStorage.clear();
         }}>
         Logout
-      </button>
-    </div>
+      </Button> */}
+    </Row>
   );
 };
-
