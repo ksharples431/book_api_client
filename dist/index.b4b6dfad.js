@@ -27323,7 +27323,7 @@ $RefreshReg$(_c, "MainView");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","../book-card/book-card":"8FC36","../book-list/book-list":"gRkjP","../book-view/book-view":"6u6eS","../login-view/login-view":"9YtA0","../signup-view/signup-view":"4OGiN","../navigation-bar/navigation-bar":"bsPVM","react-bootstrap/Row":"cMC39","react-bootstrap/Col":"2L2I6","react-router-dom":"9xmpe","./main-view.scss":"eBaMl","@parcel/transformer-js/src/esmodule-helpers.js":"gdXVH","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"89fB0"}],"8FC36":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","../book-card/book-card":"8FC36","../book-view/book-view":"6u6eS","../login-view/login-view":"9YtA0","../signup-view/signup-view":"4OGiN","../navigation-bar/navigation-bar":"bsPVM","react-bootstrap/Row":"cMC39","react-bootstrap/Col":"2L2I6","react-router-dom":"9xmpe","./main-view.scss":"eBaMl","@parcel/transformer-js/src/esmodule-helpers.js":"gdXVH","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"89fB0","../book-list/book-list":"gRkjP"}],"8FC36":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$1994 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -46327,141 +46327,7 @@ function registerExportsForReactRefresh(module1) {
     }
 }
 
-},{"ae5b17a2e412e930":"dBI1G"}],"gRkjP":[function(require,module,exports) {
-var $parcel$ReactRefreshHelpers$ac93 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
-var prevRefreshReg = window.$RefreshReg$;
-var prevRefreshSig = window.$RefreshSig$;
-$parcel$ReactRefreshHelpers$ac93.prelude(module);
-
-try {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "BookList", ()=>BookList);
-var _jsxDevRuntime = require("react/jsx-dev-runtime");
-var _react = require("react");
-var _reactDefault = parcelHelpers.interopDefault(_react);
-var _propTypes = require("prop-types");
-var _propTypesDefault = parcelHelpers.interopDefault(_propTypes);
-var _badge = require("react-bootstrap/Badge");
-var _badgeDefault = parcelHelpers.interopDefault(_badge);
-var _button = require("react-bootstrap/Button");
-var _buttonDefault = parcelHelpers.interopDefault(_button);
-var _listGroup = require("react-bootstrap/ListGroup");
-var _listGroupDefault = parcelHelpers.interopDefault(_listGroup);
-var _row = require("react-bootstrap/Row");
-var _rowDefault = parcelHelpers.interopDefault(_row);
-var _col = require("react-bootstrap/Col");
-var _colDefault = parcelHelpers.interopDefault(_col);
-var _bookListScss = require("./book-list.scss");
-const BookList = ({ book  })=>{
-    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _listGroupDefault.default), {
-        variant: "flush",
-        className: "list-group",
-        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _listGroupDefault.default).Item, {
-            as: "li",
-            className: "d-flex justify-content-between align-items-start list",
-            children: [
-                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                    className: "ms-2 me-auto",
-                    children: [
-                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                            className: "fw-bold",
-                            children: book.title
-                        }, void 0, false, {
-                            fileName: "src/components/book-list/book-list.jsx",
-                            lineNumber: 19,
-                            columnNumber: 11
-                        }, undefined),
-                        book.author
-                    ]
-                }, void 0, true, {
-                    fileName: "src/components/book-list/book-list.jsx",
-                    lineNumber: 18,
-                    columnNumber: 9
-                }, undefined),
-                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _buttonDefault.default), {
-                    className: "button",
-                    bg: "primary",
-                    children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("i", {
-                        class: "fi fi-rr-headphones"
-                    }, void 0, false, {
-                        fileName: "src/components/book-list/book-list.jsx",
-                        lineNumber: 23,
-                        columnNumber: 11
-                    }, undefined)
-                }, void 0, false, {
-                    fileName: "src/components/book-list/book-list.jsx",
-                    lineNumber: 22,
-                    columnNumber: 9
-                }, undefined),
-                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _buttonDefault.default), {
-                    className: "button",
-                    bg: "primary",
-                    children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("i", {
-                        class: "fi fi-rr-heart"
-                    }, void 0, false, {
-                        fileName: "src/components/book-list/book-list.jsx",
-                        lineNumber: 26,
-                        columnNumber: 11
-                    }, undefined)
-                }, void 0, false, {
-                    fileName: "src/components/book-list/book-list.jsx",
-                    lineNumber: 25,
-                    columnNumber: 9
-                }, undefined),
-                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _buttonDefault.default), {
-                    className: "button",
-                    bg: "primary",
-                    children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("i", {
-                        class: "fi fi-rr-heart"
-                    }, void 0, false, {
-                        fileName: "src/components/book-list/book-list.jsx",
-                        lineNumber: 29,
-                        columnNumber: 11
-                    }, undefined)
-                }, void 0, false, {
-                    fileName: "src/components/book-list/book-list.jsx",
-                    lineNumber: 28,
-                    columnNumber: 9
-                }, undefined)
-            ]
-        }, void 0, true, {
-            fileName: "src/components/book-list/book-list.jsx",
-            lineNumber: 15,
-            columnNumber: 7
-        }, undefined)
-    }, void 0, false, {
-        fileName: "src/components/book-list/book-list.jsx",
-        lineNumber: 14,
-        columnNumber: 5
-    }, undefined);
-};
-_c = BookList;
-BookList.propTypes = {
-    book: (0, _propTypesDefault.default).shape({
-        image: (0, _propTypesDefault.default).string,
-        title: (0, _propTypesDefault.default).string.isRequired,
-        author: (0, _propTypesDefault.default).string.isRequired,
-        genre: (0, _propTypesDefault.default).string,
-        series: (0, _propTypesDefault.default).string,
-        number: (0, _propTypesDefault.default).number,
-        description: (0, _propTypesDefault.default).string,
-        owned: (0, _propTypesDefault.default).bool,
-        // availability: PropTypes.array,
-        read: (0, _propTypesDefault.default).bool,
-        favorite: (0, _propTypesDefault.default).bool
-    }).isRequired
-} // Uicons by <a href="https://www.flaticon.com/uicons">Flaticon</a>
-;
-var _c;
-$RefreshReg$(_c, "BookList");
-
-  $parcel$ReactRefreshHelpers$ac93.postlude(module);
-} finally {
-  window.$RefreshReg$ = prevRefreshReg;
-  window.$RefreshSig$ = prevRefreshSig;
-}
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","prop-types":"7wKI2","react-bootstrap/Badge":"eEyks","react-bootstrap/ListGroup":"4tGXh","./book-list.scss":"aBRsG","@parcel/transformer-js/src/esmodule-helpers.js":"gdXVH","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"89fB0","react-bootstrap/Button":"aPzUt","react-bootstrap/Row":"cMC39","react-bootstrap/Col":"2L2I6"}],"aBRsG":[function() {},{}],"6u6eS":[function(require,module,exports) {
+},{"ae5b17a2e412e930":"dBI1G"}],"6u6eS":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$1e99 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -46963,98 +46829,250 @@ parcelHelpers.export(exports, "NavigationBar", ()=>NavigationBar);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _reactBootstrap = require("react-bootstrap");
 var _reactRouterDom = require("react-router-dom");
+var _button = require("react-bootstrap/Button");
+var _buttonDefault = parcelHelpers.interopDefault(_button);
+var _container = require("react-bootstrap/Container");
+var _containerDefault = parcelHelpers.interopDefault(_container);
+var _form = require("react-bootstrap/Form");
+var _formDefault = parcelHelpers.interopDefault(_form);
+var _nav = require("react-bootstrap/Nav");
+var _navDefault = parcelHelpers.interopDefault(_nav);
+var _navbar = require("react-bootstrap/Navbar");
+var _navbarDefault = parcelHelpers.interopDefault(_navbar);
+var _offcanvas = require("react-bootstrap/Offcanvas");
+var _offcanvasDefault = parcelHelpers.interopDefault(_offcanvas);
+var _row = require("react-bootstrap/Row");
+var _rowDefault = parcelHelpers.interopDefault(_row);
+var _col = require("react-bootstrap/Col");
+var _colDefault = parcelHelpers.interopDefault(_col);
+var _navigationBarScss = require("./navigation-bar.scss");
 const NavigationBar = ({ user , onLoggedOut  })=>{
-    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Navbar), {
-        bg: "light",
-        expand: "lg",
-        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Container), {
-            children: [
-                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Navbar).Brand, {
-                    as: (0, _reactRouterDom.Link),
-                    to: "/",
-                    children: "My Books App"
-                }, void 0, false, {
-                    fileName: "src/components/navigation-bar/navigation-bar.jsx",
-                    lineNumber: 8,
-                    columnNumber: 9
-                }, undefined),
-                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Navbar).Toggle, {
-                    "aria-controls": "basic-navbar-nav"
-                }, void 0, false, {
-                    fileName: "src/components/navigation-bar/navigation-bar.jsx",
-                    lineNumber: 11,
-                    columnNumber: 9
-                }, undefined),
-                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Navbar).Collapse, {
-                    id: "basic-navbar-nav",
-                    children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Nav), {
-                        className: "me-auto",
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
+        children: [
+            false
+        ].map((expand)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                className: "navbar-holder",
+                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _navbarDefault.default), {
+                    expand: expand,
+                    className: "mb-4 navbar",
+                    children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _containerDefault.default), {
+                        fluid: true,
                         children: [
-                            !user && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _navbarDefault.default).Toggle, {
+                                "aria-controls": `offcanvasNavbar-expand-${expand}`
+                            }, void 0, false, {
+                                fileName: "src/components/navigation-bar/navigation-bar.jsx",
+                                lineNumber: 22,
+                                columnNumber: 15
+                            }, undefined),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _navbarDefault.default).Brand, {
+                                as: (0, _reactRouterDom.Link),
+                                to: "/",
+                                className: "brand",
+                                children: "My Library"
+                            }, void 0, false, {
+                                fileName: "src/components/navigation-bar/navigation-bar.jsx",
+                                lineNumber: 25,
+                                columnNumber: 15
+                            }, undefined),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default), {
+                                className: "d-flex",
                                 children: [
-                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Nav).Link, {
-                                        as: (0, _reactRouterDom.Link),
-                                        to: "/login",
-                                        children: "Login"
-                                    }, void 0, false, {
-                                        fileName: "src/components/navigation-bar/navigation-bar.jsx",
-                                        lineNumber: 16,
-                                        columnNumber: 17
-                                    }, undefined),
-                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Nav).Link, {
-                                        as: (0, _reactRouterDom.Link),
-                                        to: "/signup",
-                                        children: "Signup"
-                                    }, void 0, false, {
-                                        fileName: "src/components/navigation-bar/navigation-bar.jsx",
-                                        lineNumber: 19,
-                                        columnNumber: 17
-                                    }, undefined)
-                                ]
-                            }, void 0, true),
-                            user && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
-                                children: [
-                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Nav).Link, {
-                                        as: (0, _reactRouterDom.Link),
-                                        to: "/",
-                                        children: "Home"
-                                    }, void 0, false, {
-                                        fileName: "src/components/navigation-bar/navigation-bar.jsx",
-                                        lineNumber: 26,
-                                        columnNumber: 17
-                                    }, undefined),
-                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Nav).Link, {
-                                        onClick: onLoggedOut,
-                                        children: "Logout"
+                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Control, {
+                                        type: "search",
+                                        placeholder: "Search",
+                                        className: "me-2",
+                                        "aria-label": "Search"
                                     }, void 0, false, {
                                         fileName: "src/components/navigation-bar/navigation-bar.jsx",
                                         lineNumber: 29,
                                         columnNumber: 17
+                                    }, undefined),
+                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _buttonDefault.default), {
+                                        variant: "outline-success",
+                                        children: "Search"
+                                    }, void 0, false, {
+                                        fileName: "src/components/navigation-bar/navigation-bar.jsx",
+                                        lineNumber: 35,
+                                        columnNumber: 17
                                     }, undefined)
                                 ]
-                            }, void 0, true)
+                            }, void 0, true, {
+                                fileName: "src/components/navigation-bar/navigation-bar.jsx",
+                                lineNumber: 28,
+                                columnNumber: 15
+                            }, undefined),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _navDefault.default), {
+                                children: [
+                                    !user && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                                        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _navDefault.default).Link, {
+                                            as: (0, _reactRouterDom.Link),
+                                            to: "/login",
+                                            children: "Login"
+                                        }, void 0, false, {
+                                            fileName: "src/components/navigation-bar/navigation-bar.jsx",
+                                            lineNumber: 40,
+                                            columnNumber: 21
+                                        }, undefined)
+                                    }, void 0, false, {
+                                        fileName: "src/components/navigation-bar/navigation-bar.jsx",
+                                        lineNumber: 39,
+                                        columnNumber: 19
+                                    }, undefined),
+                                    user && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
+                                        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _navDefault.default).Link, {
+                                            onClick: onLoggedOut,
+                                            children: "Logout"
+                                        }, void 0, false, {
+                                            fileName: "src/components/navigation-bar/navigation-bar.jsx",
+                                            lineNumber: 50,
+                                            columnNumber: 21
+                                        }, undefined)
+                                    }, void 0, false)
+                                ]
+                            }, void 0, true, {
+                                fileName: "src/components/navigation-bar/navigation-bar.jsx",
+                                lineNumber: 37,
+                                columnNumber: 15
+                            }, undefined),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _navbarDefault.default).Offcanvas, {
+                                id: `offcanvasNavbar-expand-${expand}`,
+                                "aria-labelledby": `offcanvasNavbarLabel-expand-${expand}`,
+                                placement: "start",
+                                children: [
+                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _offcanvasDefault.default).Header, {
+                                        closeButton: true,
+                                        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _offcanvasDefault.default).Title, {
+                                            id: `offcanvasNavbarLabel-expand-${expand}`,
+                                            children: "My Library"
+                                        }, void 0, false, {
+                                            fileName: "src/components/navigation-bar/navigation-bar.jsx",
+                                            lineNumber: 60,
+                                            columnNumber: 19
+                                        }, undefined)
+                                    }, void 0, false, {
+                                        fileName: "src/components/navigation-bar/navigation-bar.jsx",
+                                        lineNumber: 59,
+                                        columnNumber: 17
+                                    }, undefined),
+                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _offcanvasDefault.default).Body, {
+                                        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _navDefault.default), {
+                                            className: "justify-content-end flex-grow-1 pe-3",
+                                            children: [
+                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _navDefault.default).Link, {
+                                                    href: "#action2",
+                                                    children: "Home"
+                                                }, void 0, false, {
+                                                    fileName: "src/components/navigation-bar/navigation-bar.jsx",
+                                                    lineNumber: 67,
+                                                    columnNumber: 21
+                                                }, undefined),
+                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _navDefault.default).Link, {
+                                                    href: "#action2",
+                                                    children: "Login"
+                                                }, void 0, false, {
+                                                    fileName: "src/components/navigation-bar/navigation-bar.jsx",
+                                                    lineNumber: 68,
+                                                    columnNumber: 21
+                                                }, undefined),
+                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _navDefault.default).Link, {
+                                                    href: "#action2",
+                                                    children: "Signup"
+                                                }, void 0, false, {
+                                                    fileName: "src/components/navigation-bar/navigation-bar.jsx",
+                                                    lineNumber: 69,
+                                                    columnNumber: 21
+                                                }, undefined),
+                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _navDefault.default).Link, {
+                                                    href: "#action2",
+                                                    children: "Logout"
+                                                }, void 0, false, {
+                                                    fileName: "src/components/navigation-bar/navigation-bar.jsx",
+                                                    lineNumber: 70,
+                                                    columnNumber: 21
+                                                }, undefined),
+                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _navDefault.default).Link, {
+                                                    href: "#action1",
+                                                    children: "Titles"
+                                                }, void 0, false, {
+                                                    fileName: "src/components/navigation-bar/navigation-bar.jsx",
+                                                    lineNumber: 71,
+                                                    columnNumber: 21
+                                                }, undefined),
+                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _navDefault.default).Link, {
+                                                    href: "#action2",
+                                                    children: "Authors"
+                                                }, void 0, false, {
+                                                    fileName: "src/components/navigation-bar/navigation-bar.jsx",
+                                                    lineNumber: 72,
+                                                    columnNumber: 21
+                                                }, undefined),
+                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _navDefault.default).Link, {
+                                                    href: "#action2",
+                                                    children: "Series"
+                                                }, void 0, false, {
+                                                    fileName: "src/components/navigation-bar/navigation-bar.jsx",
+                                                    lineNumber: 73,
+                                                    columnNumber: 21
+                                                }, undefined),
+                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _navDefault.default).Link, {
+                                                    href: "#action2",
+                                                    children: "Genre"
+                                                }, void 0, false, {
+                                                    fileName: "src/components/navigation-bar/navigation-bar.jsx",
+                                                    lineNumber: 74,
+                                                    columnNumber: 21
+                                                }, undefined),
+                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _navDefault.default).Link, {
+                                                    href: "#action2",
+                                                    children: "Favorites"
+                                                }, void 0, false, {
+                                                    fileName: "src/components/navigation-bar/navigation-bar.jsx",
+                                                    lineNumber: 75,
+                                                    columnNumber: 21
+                                                }, undefined),
+                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _navDefault.default).Link, {
+                                                    href: "#action2",
+                                                    children: "Reading List"
+                                                }, void 0, false, {
+                                                    fileName: "src/components/navigation-bar/navigation-bar.jsx",
+                                                    lineNumber: 76,
+                                                    columnNumber: 21
+                                                }, undefined)
+                                            ]
+                                        }, void 0, true, {
+                                            fileName: "src/components/navigation-bar/navigation-bar.jsx",
+                                            lineNumber: 66,
+                                            columnNumber: 19
+                                        }, undefined)
+                                    }, void 0, false, {
+                                        fileName: "src/components/navigation-bar/navigation-bar.jsx",
+                                        lineNumber: 65,
+                                        columnNumber: 17
+                                    }, undefined)
+                                ]
+                            }, void 0, true, {
+                                fileName: "src/components/navigation-bar/navigation-bar.jsx",
+                                lineNumber: 55,
+                                columnNumber: 15
+                            }, undefined)
                         ]
                     }, void 0, true, {
                         fileName: "src/components/navigation-bar/navigation-bar.jsx",
-                        lineNumber: 13,
-                        columnNumber: 11
+                        lineNumber: 19,
+                        columnNumber: 13
                     }, undefined)
-                }, void 0, false, {
+                }, expand, false, {
                     fileName: "src/components/navigation-bar/navigation-bar.jsx",
-                    lineNumber: 12,
-                    columnNumber: 9
+                    lineNumber: 18,
+                    columnNumber: 11
                 }, undefined)
-            ]
-        }, void 0, true, {
-            fileName: "src/components/navigation-bar/navigation-bar.jsx",
-            lineNumber: 7,
-            columnNumber: 7
-        }, undefined)
-    }, void 0, false, {
-        fileName: "src/components/navigation-bar/navigation-bar.jsx",
-        lineNumber: 6,
-        columnNumber: 5
-    }, undefined);
+            }, void 0, false, {
+                fileName: "src/components/navigation-bar/navigation-bar.jsx",
+                lineNumber: 17,
+                columnNumber: 9
+            }, undefined))
+    }, void 0, false);
 };
 _c = NavigationBar;
 var _c;
@@ -47065,6 +47083,140 @@ $RefreshReg$(_c, "NavigationBar");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react-bootstrap":"3AD9A","react-router-dom":"9xmpe","@parcel/transformer-js/src/esmodule-helpers.js":"gdXVH","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"89fB0"}],"eBaMl":[function() {},{}],"lJZlQ":[function() {},{}]},["3XJd6","gaXen","d8Dch"], "d8Dch", "parcelRequire40a1")
+},{"react-bootstrap":"3AD9A","react-router-dom":"9xmpe","@parcel/transformer-js/src/esmodule-helpers.js":"gdXVH","react/jsx-dev-runtime":"iTorj","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"89fB0","react-bootstrap/Button":"aPzUt","react-bootstrap/Container":"hEdsw","react-bootstrap/Form":"iBZ80","react-bootstrap/Nav":"cXyL2","react-bootstrap/Navbar":"1mHjo","react-bootstrap/Offcanvas":"eC3RS","./navigation-bar.scss":"dnXvl","react-bootstrap/Row":"cMC39","react-bootstrap/Col":"2L2I6"}],"dnXvl":[function() {},{}],"eBaMl":[function() {},{}],"gRkjP":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$ac93 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$ac93.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "BookList", ()=>BookList);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
+var _propTypes = require("prop-types");
+var _propTypesDefault = parcelHelpers.interopDefault(_propTypes);
+var _badge = require("react-bootstrap/Badge");
+var _badgeDefault = parcelHelpers.interopDefault(_badge);
+var _button = require("react-bootstrap/Button");
+var _buttonDefault = parcelHelpers.interopDefault(_button);
+var _listGroup = require("react-bootstrap/ListGroup");
+var _listGroupDefault = parcelHelpers.interopDefault(_listGroup);
+var _row = require("react-bootstrap/Row");
+var _rowDefault = parcelHelpers.interopDefault(_row);
+var _col = require("react-bootstrap/Col");
+var _colDefault = parcelHelpers.interopDefault(_col);
+var _bookListScss = require("./book-list.scss");
+const BookList = ({ book  })=>{
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _listGroupDefault.default), {
+        variant: "flush",
+        className: "list-group",
+        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _listGroupDefault.default).Item, {
+            as: "li",
+            className: "d-flex justify-content-between align-items-start list",
+            children: [
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                    className: "ms-2 me-auto",
+                    children: [
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                            className: "fw-bold",
+                            children: book.title
+                        }, void 0, false, {
+                            fileName: "src/components/book-list/book-list.jsx",
+                            lineNumber: 19,
+                            columnNumber: 11
+                        }, undefined),
+                        book.author
+                    ]
+                }, void 0, true, {
+                    fileName: "src/components/book-list/book-list.jsx",
+                    lineNumber: 18,
+                    columnNumber: 9
+                }, undefined),
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _buttonDefault.default), {
+                    className: "button",
+                    bg: "primary",
+                    children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("i", {
+                        class: "fi fi-rr-headphones"
+                    }, void 0, false, {
+                        fileName: "src/components/book-list/book-list.jsx",
+                        lineNumber: 23,
+                        columnNumber: 11
+                    }, undefined)
+                }, void 0, false, {
+                    fileName: "src/components/book-list/book-list.jsx",
+                    lineNumber: 22,
+                    columnNumber: 9
+                }, undefined),
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _buttonDefault.default), {
+                    className: "button",
+                    bg: "primary",
+                    children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("i", {
+                        class: "fi fi-rr-heart"
+                    }, void 0, false, {
+                        fileName: "src/components/book-list/book-list.jsx",
+                        lineNumber: 26,
+                        columnNumber: 11
+                    }, undefined)
+                }, void 0, false, {
+                    fileName: "src/components/book-list/book-list.jsx",
+                    lineNumber: 25,
+                    columnNumber: 9
+                }, undefined),
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _buttonDefault.default), {
+                    className: "button",
+                    bg: "primary",
+                    children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("i", {
+                        class: "fi fi-rr-heart"
+                    }, void 0, false, {
+                        fileName: "src/components/book-list/book-list.jsx",
+                        lineNumber: 29,
+                        columnNumber: 11
+                    }, undefined)
+                }, void 0, false, {
+                    fileName: "src/components/book-list/book-list.jsx",
+                    lineNumber: 28,
+                    columnNumber: 9
+                }, undefined)
+            ]
+        }, void 0, true, {
+            fileName: "src/components/book-list/book-list.jsx",
+            lineNumber: 15,
+            columnNumber: 7
+        }, undefined)
+    }, void 0, false, {
+        fileName: "src/components/book-list/book-list.jsx",
+        lineNumber: 14,
+        columnNumber: 5
+    }, undefined);
+};
+_c = BookList;
+BookList.propTypes = {
+    book: (0, _propTypesDefault.default).shape({
+        image: (0, _propTypesDefault.default).string,
+        title: (0, _propTypesDefault.default).string.isRequired,
+        author: (0, _propTypesDefault.default).string.isRequired,
+        genre: (0, _propTypesDefault.default).string,
+        series: (0, _propTypesDefault.default).string,
+        number: (0, _propTypesDefault.default).number,
+        description: (0, _propTypesDefault.default).string,
+        owned: (0, _propTypesDefault.default).bool,
+        // availability: PropTypes.array,
+        read: (0, _propTypesDefault.default).bool,
+        favorite: (0, _propTypesDefault.default).bool
+    }).isRequired
+} // Uicons by <a href="https://www.flaticon.com/uicons">Flaticon</a>
+;
+var _c;
+$RefreshReg$(_c, "BookList");
+
+  $parcel$ReactRefreshHelpers$ac93.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","prop-types":"7wKI2","react-bootstrap/Badge":"eEyks","react-bootstrap/Button":"aPzUt","react-bootstrap/ListGroup":"4tGXh","react-bootstrap/Row":"cMC39","react-bootstrap/Col":"2L2I6","./book-list.scss":"aBRsG","@parcel/transformer-js/src/esmodule-helpers.js":"gdXVH","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"89fB0"}],"aBRsG":[function() {},{}],"lJZlQ":[function() {},{}]},["3XJd6","gaXen","d8Dch"], "d8Dch", "parcelRequire40a1")
 
 //# sourceMappingURL=index.b4b6dfad.js.map

@@ -1,23 +1,5 @@
 
 
-.list {
-  margin: 1px;
-  background-color: #eeef9a !important;
-  border-bottom: 2px solid #e1e890 !important;
-}
-
-.list-group {
-  width: 75%;
-}
-
-.button {
-  margin-right: 5px;
-}
-
-.li {
-  background-color: #eeef9a;
-}
-
 img {
   width: 100%;
 }
@@ -55,7 +37,40 @@ img {
   margin-bottom: 20px;
 }
 
+.navbar-holder {
+  width: 100%;
+  border-bottom: 3px solid #dfe693;
+  border-left: 3px solid #dfc075;
+}
 
+.navbar {
+  margin-top: 20px;
+}
+
+.brand {
+  font-size: 50px;
+  font-weight: bold;
+}
+
+
+
+.list {
+  margin: 1px;
+  background-color: #eeef9a !important;
+  border-bottom: 2px solid #e1e890 !important;
+}
+
+.list-group {
+  width: 75%;
+}
+
+.button {
+  margin-right: 5px;
+}
+
+.li {
+  background-color: #eeef9a;
+}
 
 :root {
   --bs-blue: #0d6efd;
