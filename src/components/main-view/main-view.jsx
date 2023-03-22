@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { BookCard } from '../book-card/book-card';
+import { BookList } from '../book-list/book-list'
 import { BookView } from '../book-view/book-view';
 import { LoginView } from '../login-view/login-view';
 import { SignupView } from '../signup-view/signup-view';
@@ -109,9 +110,9 @@ export const MainView = () => {
                 ) : (
                   <>
                     {books.map((book) => (
-                      <Col className="mb-4" key={book.id} md={3}>
-                        <BookCard book={book} />
-                      </Col>
+ 
+                        <BookList book={book} />
+
                     ))}
                   </>
                 )}
@@ -121,5 +122,6 @@ export const MainView = () => {
         </Routes>
       </Row>
     </BrowserRouter>
+
   );
 };

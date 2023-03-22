@@ -34,5 +34,4 @@ BookCard.propTypes = {
     read: PropTypes.bool,
     favorite: PropTypes.bool,
   }).isRequired,
-  onBookClick: PropTypes.func.isRequired,
 };

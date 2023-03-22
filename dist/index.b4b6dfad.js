@@ -2962,7 +2962,7 @@ $RefreshReg$(_c, "App");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react-dom/client":"lOjBx","./index.scss":"lJZlQ","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"89fB0","./components/main-view/main-view":"4gflv","react-bootstrap/Container":"hEdsw","@parcel/transformer-js/src/esmodule-helpers.js":"gdXVH"}],"iTorj":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react-dom/client":"lOjBx","./components/main-view/main-view":"4gflv","react-bootstrap/Container":"hEdsw","./index.scss":"lJZlQ","@parcel/transformer-js/src/esmodule-helpers.js":"gdXVH","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"89fB0"}],"iTorj":[function(require,module,exports) {
 "use strict";
 module.exports = require("4ae82345f2c38cbf");
 
@@ -27147,140 +27147,7 @@ module.exports = require("b3538b1a4144f4ca");
     /* global __REACT_DEVTOOLS_GLOBAL_HOOK__ */ if (typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ !== "undefined" && typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop === "function") __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop(new Error());
 })();
 
-},{}],"lJZlQ":[function() {},{}],"89fB0":[function(require,module,exports) {
-"use strict";
-var Refresh = require("ae5b17a2e412e930");
-function debounce(func, delay) {
-    {
-        let timeout = undefined;
-        let lastTime = 0;
-        return function(args) {
-            // Call immediately if last call was more than the delay ago.
-            // Otherwise, set a timeout. This means the first call is fast
-            // (for the common case of a single update), and subsequent updates
-            // are batched.
-            let now = Date.now();
-            if (now - lastTime > delay) {
-                lastTime = now;
-                func.call(null, args);
-            } else {
-                clearTimeout(timeout);
-                timeout = setTimeout(function() {
-                    timeout = undefined;
-                    lastTime = Date.now();
-                    func.call(null, args);
-                }, delay);
-            }
-        };
-    }
-}
-var enqueueUpdate = debounce(function() {
-    Refresh.performReactRefresh();
-}, 30); // Everthing below is either adapted or copied from
-// https://github.com/facebook/metro/blob/61de16bd1edd7e738dd0311c89555a644023ab2d/packages/metro/src/lib/polyfills/require.js
-// MIT License - Copyright (c) Facebook, Inc. and its affiliates.
-module.exports.prelude = function(module1) {
-    window.$RefreshReg$ = function(type, id) {
-        Refresh.register(type, module1.id + " " + id);
-    };
-    window.$RefreshSig$ = Refresh.createSignatureFunctionForTransform;
-};
-module.exports.postlude = function(module1) {
-    if (isReactRefreshBoundary(module1.exports)) {
-        registerExportsForReactRefresh(module1);
-        if (module1.hot) {
-            module1.hot.dispose(function(data) {
-                if (Refresh.hasUnrecoverableErrors()) window.location.reload();
-                data.prevExports = module1.exports;
-            });
-            module1.hot.accept(function(getParents) {
-                var prevExports = module1.hot.data.prevExports;
-                var nextExports = module1.exports; // Since we just executed the code for it, it's possible
-                // that the new exports make it ineligible for being a boundary.
-                var isNoLongerABoundary = !isReactRefreshBoundary(nextExports); // It can also become ineligible if its exports are incompatible
-                // with the previous exports.
-                // For example, if you add/remove/change exports, we'll want
-                // to re-execute the importing modules, and force those components
-                // to re-render. Similarly, if you convert a class component
-                // to a function, we want to invalidate the boundary.
-                var didInvalidate = shouldInvalidateReactRefreshBoundary(prevExports, nextExports);
-                if (isNoLongerABoundary || didInvalidate) {
-                    // We'll be conservative. The only case in which we won't do a full
-                    // reload is if all parent modules are also refresh boundaries.
-                    // In that case we'll add them to the current queue.
-                    var parents = getParents();
-                    if (parents.length === 0) {
-                        // Looks like we bubbled to the root. Can't recover from that.
-                        window.location.reload();
-                        return;
-                    }
-                    return parents;
-                }
-                enqueueUpdate();
-            });
-        }
-    }
-};
-function isReactRefreshBoundary(exports) {
-    if (Refresh.isLikelyComponentType(exports)) return true;
-    if (exports == null || typeof exports !== "object") // Exit if we can't iterate over exports.
-    return false;
-    var hasExports = false;
-    var areAllExportsComponents = true;
-    let isESM = "__esModule" in exports;
-    for(var key in exports){
-        hasExports = true;
-        if (key === "__esModule") continue;
-        var desc = Object.getOwnPropertyDescriptor(exports, key);
-        if (desc && desc.get && !isESM) // Don't invoke getters for CJS as they may have side effects.
-        return false;
-        var exportValue = exports[key];
-        if (!Refresh.isLikelyComponentType(exportValue)) areAllExportsComponents = false;
-    }
-    return hasExports && areAllExportsComponents;
-}
-function shouldInvalidateReactRefreshBoundary(prevExports, nextExports) {
-    var prevSignature = getRefreshBoundarySignature(prevExports);
-    var nextSignature = getRefreshBoundarySignature(nextExports);
-    if (prevSignature.length !== nextSignature.length) return true;
-    for(var i = 0; i < nextSignature.length; i++){
-        if (prevSignature[i] !== nextSignature[i]) return true;
-    }
-    return false;
-} // When this signature changes, it's unsafe to stop at this refresh boundary.
-function getRefreshBoundarySignature(exports) {
-    var signature = [];
-    signature.push(Refresh.getFamilyByType(exports));
-    if (exports == null || typeof exports !== "object") // Exit if we can't iterate over exports.
-    // (This is important for legacy environments.)
-    return signature;
-    let isESM = "__esModule" in exports;
-    for(var key in exports){
-        if (key === "__esModule") continue;
-        var desc = Object.getOwnPropertyDescriptor(exports, key);
-        if (desc && desc.get && !isESM) continue;
-        var exportValue = exports[key];
-        signature.push(key);
-        signature.push(Refresh.getFamilyByType(exportValue));
-    }
-    return signature;
-}
-function registerExportsForReactRefresh(module1) {
-    var exports = module1.exports, id = module1.id;
-    Refresh.register(exports, id + " %exports%");
-    if (exports == null || typeof exports !== "object") // Exit if we can't iterate over exports.
-    // (This is important for legacy environments.)
-    return;
-    let isESM = "__esModule" in exports;
-    for(var key in exports){
-        var desc = Object.getOwnPropertyDescriptor(exports, key);
-        if (desc && desc.get && !isESM) continue;
-        var exportValue = exports[key];
-        Refresh.register(exportValue, id + " %exports% " + key);
-    }
-}
-
-},{"ae5b17a2e412e930":"dBI1G"}],"4gflv":[function(require,module,exports) {
+},{}],"4gflv":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$f7a6 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -27293,6 +27160,7 @@ parcelHelpers.export(exports, "MainView", ()=>MainView);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _react = require("react");
 var _bookCard = require("../book-card/book-card");
+var _bookList = require("../book-list/book-list");
 var _bookView = require("../book-view/book-view");
 var _loginView = require("../login-view/login-view");
 var _signupView = require("../signup-view/signup-view");
@@ -27349,7 +27217,7 @@ const MainView = ()=>{
                 }
             }, void 0, false, {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 48,
+                lineNumber: 49,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _rowDefault.default), {
@@ -27368,7 +27236,7 @@ const MainView = ()=>{
                             }, void 0, false)
                         }, void 0, false, {
                             fileName: "src/components/main-view/main-view.jsx",
-                            lineNumber: 57,
+                            lineNumber: 58,
                             columnNumber: 11
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
@@ -27385,7 +27253,7 @@ const MainView = ()=>{
                             }, void 0, false)
                         }, void 0, false, {
                             fileName: "src/components/main-view/main-view.jsx",
-                            lineNumber: 71,
+                            lineNumber: 72,
                             columnNumber: 11
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
@@ -27405,7 +27273,7 @@ const MainView = ()=>{
                             }, void 0, false)
                         }, void 0, false, {
                             fileName: "src/components/main-view/main-view.jsx",
-                            lineNumber: 85,
+                            lineNumber: 86,
                             columnNumber: 11
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
@@ -27417,35 +27285,31 @@ const MainView = ()=>{
                                 }, void 0, false, void 0, void 0) : books.length === 0 ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _colDefault.default), {
                                     children: "The list is empty!"
                                 }, void 0, false, void 0, void 0) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
-                                    children: books.map((book)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _colDefault.default), {
-                                            className: "mb-4",
-                                            md: 3,
-                                            children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _bookCard.BookCard), {
-                                                book: book
-                                            }, void 0, false, void 0, void 0)
-                                        }, book.id, false, void 0, void 0))
+                                    children: books.map((book)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _bookList.BookList), {
+                                            book: book
+                                        }, void 0, false, void 0, void 0))
                                 }, void 0, false)
                             }, void 0, false)
                         }, void 0, false, {
                             fileName: "src/components/main-view/main-view.jsx",
-                            lineNumber: 101,
+                            lineNumber: 102,
                             columnNumber: 11
                         }, undefined)
                     ]
                 }, void 0, true, {
                     fileName: "src/components/main-view/main-view.jsx",
-                    lineNumber: 56,
+                    lineNumber: 57,
                     columnNumber: 9
                 }, undefined)
             }, void 0, false, {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 55,
+                lineNumber: 56,
                 columnNumber: 7
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 47,
+        lineNumber: 48,
         columnNumber: 5
     }, undefined);
 };
@@ -27459,37 +27323,7 @@ $RefreshReg$(_c, "MainView");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","@parcel/transformer-js/src/esmodule-helpers.js":"gdXVH","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"89fB0","react":"21dqq","../book-card/book-card":"8FC36","../book-view/book-view":"6u6eS","../login-view/login-view":"9YtA0","./main-view.scss":"eBaMl","../signup-view/signup-view":"4OGiN","react-bootstrap/Col":"2L2I6","react-bootstrap/Row":"cMC39","react-router-dom":"9xmpe","../navigation-bar/navigation-bar":"bsPVM"}],"gdXVH":[function(require,module,exports) {
-exports.interopDefault = function(a) {
-    return a && a.__esModule ? a : {
-        default: a
-    };
-};
-exports.defineInteropFlag = function(a) {
-    Object.defineProperty(a, "__esModule", {
-        value: true
-    });
-};
-exports.exportAll = function(source, dest) {
-    Object.keys(source).forEach(function(key) {
-        if (key === "default" || key === "__esModule" || dest.hasOwnProperty(key)) return;
-        Object.defineProperty(dest, key, {
-            enumerable: true,
-            get: function() {
-                return source[key];
-            }
-        });
-    });
-    return dest;
-};
-exports.export = function(dest, destName, get) {
-    Object.defineProperty(dest, destName, {
-        enumerable: true,
-        get: get
-    });
-};
-
-},{}],"8FC36":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","../book-card/book-card":"8FC36","../book-list/book-list":"gRkjP","../book-view/book-view":"6u6eS","../login-view/login-view":"9YtA0","../signup-view/signup-view":"4OGiN","../navigation-bar/navigation-bar":"bsPVM","react-bootstrap/Row":"cMC39","react-bootstrap/Col":"2L2I6","react-router-dom":"9xmpe","./main-view.scss":"eBaMl","@parcel/transformer-js/src/esmodule-helpers.js":"gdXVH","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"89fB0"}],"8FC36":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$1994 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -27577,8 +27411,7 @@ BookCard.propTypes = {
         // availability: PropTypes.array,
         read: (0, _propTypesDefault.default).bool,
         favorite: (0, _propTypesDefault.default).bool
-    }).isRequired,
-    onBookClick: (0, _propTypesDefault.default).func.isRequired
+    }).isRequired
 };
 var _c;
 $RefreshReg$(_c, "BookCard");
@@ -27588,7 +27421,7 @@ $RefreshReg$(_c, "BookCard");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","@parcel/transformer-js/src/esmodule-helpers.js":"gdXVH","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"89fB0","prop-types":"7wKI2","./book-card.scss":"8OflA","react-bootstrap":"3AD9A","react":"21dqq","react-router-dom":"9xmpe"}],"7wKI2":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","prop-types":"7wKI2","react-bootstrap":"3AD9A","react-router-dom":"9xmpe","./book-card.scss":"8OflA","@parcel/transformer-js/src/esmodule-helpers.js":"gdXVH","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"89fB0"}],"7wKI2":[function(require,module,exports) {
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -28335,7 +28168,7 @@ printWarning = function(text) {
 };
 module.exports = checkPropTypes;
 
-},{"9afe3de7e3d7295d":"jZTZJ","6bee3b09c35bb46":"fqKuf"}],"8OflA":[function() {},{}],"3AD9A":[function(require,module,exports) {
+},{"9afe3de7e3d7295d":"jZTZJ","6bee3b09c35bb46":"fqKuf"}],"3AD9A":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "Accordion", ()=>(0, _accordionDefault.default));
@@ -28774,7 +28607,37 @@ function _extends() {
 }
 exports.default = _extends;
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gdXVH"}],"adHgr":[function(require,module,exports) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gdXVH"}],"gdXVH":[function(require,module,exports) {
+exports.interopDefault = function(a) {
+    return a && a.__esModule ? a : {
+        default: a
+    };
+};
+exports.defineInteropFlag = function(a) {
+    Object.defineProperty(a, "__esModule", {
+        value: true
+    });
+};
+exports.exportAll = function(source, dest) {
+    Object.keys(source).forEach(function(key) {
+        if (key === "default" || key === "__esModule" || dest.hasOwnProperty(key)) return;
+        Object.defineProperty(dest, key, {
+            enumerable: true,
+            get: function() {
+                return source[key];
+            }
+        });
+    });
+    return dest;
+};
+exports.export = function(dest, destName, get) {
+    Object.defineProperty(dest, destName, {
+        enumerable: true,
+        get: get
+    });
+};
+
+},{}],"adHgr":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 function _objectWithoutPropertiesLoose(source, excluded) {
@@ -46331,7 +46194,274 @@ function getTargetMatch(matches, location) {
     return pathMatches[pathMatches.length - 1];
 } //#endregion
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gdXVH"}],"6u6eS":[function(require,module,exports) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gdXVH"}],"8OflA":[function() {},{}],"89fB0":[function(require,module,exports) {
+"use strict";
+var Refresh = require("ae5b17a2e412e930");
+function debounce(func, delay) {
+    {
+        let timeout = undefined;
+        let lastTime = 0;
+        return function(args) {
+            // Call immediately if last call was more than the delay ago.
+            // Otherwise, set a timeout. This means the first call is fast
+            // (for the common case of a single update), and subsequent updates
+            // are batched.
+            let now = Date.now();
+            if (now - lastTime > delay) {
+                lastTime = now;
+                func.call(null, args);
+            } else {
+                clearTimeout(timeout);
+                timeout = setTimeout(function() {
+                    timeout = undefined;
+                    lastTime = Date.now();
+                    func.call(null, args);
+                }, delay);
+            }
+        };
+    }
+}
+var enqueueUpdate = debounce(function() {
+    Refresh.performReactRefresh();
+}, 30); // Everthing below is either adapted or copied from
+// https://github.com/facebook/metro/blob/61de16bd1edd7e738dd0311c89555a644023ab2d/packages/metro/src/lib/polyfills/require.js
+// MIT License - Copyright (c) Facebook, Inc. and its affiliates.
+module.exports.prelude = function(module1) {
+    window.$RefreshReg$ = function(type, id) {
+        Refresh.register(type, module1.id + " " + id);
+    };
+    window.$RefreshSig$ = Refresh.createSignatureFunctionForTransform;
+};
+module.exports.postlude = function(module1) {
+    if (isReactRefreshBoundary(module1.exports)) {
+        registerExportsForReactRefresh(module1);
+        if (module1.hot) {
+            module1.hot.dispose(function(data) {
+                if (Refresh.hasUnrecoverableErrors()) window.location.reload();
+                data.prevExports = module1.exports;
+            });
+            module1.hot.accept(function(getParents) {
+                var prevExports = module1.hot.data.prevExports;
+                var nextExports = module1.exports; // Since we just executed the code for it, it's possible
+                // that the new exports make it ineligible for being a boundary.
+                var isNoLongerABoundary = !isReactRefreshBoundary(nextExports); // It can also become ineligible if its exports are incompatible
+                // with the previous exports.
+                // For example, if you add/remove/change exports, we'll want
+                // to re-execute the importing modules, and force those components
+                // to re-render. Similarly, if you convert a class component
+                // to a function, we want to invalidate the boundary.
+                var didInvalidate = shouldInvalidateReactRefreshBoundary(prevExports, nextExports);
+                if (isNoLongerABoundary || didInvalidate) {
+                    // We'll be conservative. The only case in which we won't do a full
+                    // reload is if all parent modules are also refresh boundaries.
+                    // In that case we'll add them to the current queue.
+                    var parents = getParents();
+                    if (parents.length === 0) {
+                        // Looks like we bubbled to the root. Can't recover from that.
+                        window.location.reload();
+                        return;
+                    }
+                    return parents;
+                }
+                enqueueUpdate();
+            });
+        }
+    }
+};
+function isReactRefreshBoundary(exports) {
+    if (Refresh.isLikelyComponentType(exports)) return true;
+    if (exports == null || typeof exports !== "object") // Exit if we can't iterate over exports.
+    return false;
+    var hasExports = false;
+    var areAllExportsComponents = true;
+    let isESM = "__esModule" in exports;
+    for(var key in exports){
+        hasExports = true;
+        if (key === "__esModule") continue;
+        var desc = Object.getOwnPropertyDescriptor(exports, key);
+        if (desc && desc.get && !isESM) // Don't invoke getters for CJS as they may have side effects.
+        return false;
+        var exportValue = exports[key];
+        if (!Refresh.isLikelyComponentType(exportValue)) areAllExportsComponents = false;
+    }
+    return hasExports && areAllExportsComponents;
+}
+function shouldInvalidateReactRefreshBoundary(prevExports, nextExports) {
+    var prevSignature = getRefreshBoundarySignature(prevExports);
+    var nextSignature = getRefreshBoundarySignature(nextExports);
+    if (prevSignature.length !== nextSignature.length) return true;
+    for(var i = 0; i < nextSignature.length; i++){
+        if (prevSignature[i] !== nextSignature[i]) return true;
+    }
+    return false;
+} // When this signature changes, it's unsafe to stop at this refresh boundary.
+function getRefreshBoundarySignature(exports) {
+    var signature = [];
+    signature.push(Refresh.getFamilyByType(exports));
+    if (exports == null || typeof exports !== "object") // Exit if we can't iterate over exports.
+    // (This is important for legacy environments.)
+    return signature;
+    let isESM = "__esModule" in exports;
+    for(var key in exports){
+        if (key === "__esModule") continue;
+        var desc = Object.getOwnPropertyDescriptor(exports, key);
+        if (desc && desc.get && !isESM) continue;
+        var exportValue = exports[key];
+        signature.push(key);
+        signature.push(Refresh.getFamilyByType(exportValue));
+    }
+    return signature;
+}
+function registerExportsForReactRefresh(module1) {
+    var exports = module1.exports, id = module1.id;
+    Refresh.register(exports, id + " %exports%");
+    if (exports == null || typeof exports !== "object") // Exit if we can't iterate over exports.
+    // (This is important for legacy environments.)
+    return;
+    let isESM = "__esModule" in exports;
+    for(var key in exports){
+        var desc = Object.getOwnPropertyDescriptor(exports, key);
+        if (desc && desc.get && !isESM) continue;
+        var exportValue = exports[key];
+        Refresh.register(exportValue, id + " %exports% " + key);
+    }
+}
+
+},{"ae5b17a2e412e930":"dBI1G"}],"gRkjP":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$ac93 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$ac93.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "BookList", ()=>BookList);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
+var _propTypes = require("prop-types");
+var _propTypesDefault = parcelHelpers.interopDefault(_propTypes);
+var _badge = require("react-bootstrap/Badge");
+var _badgeDefault = parcelHelpers.interopDefault(_badge);
+var _button = require("react-bootstrap/Button");
+var _buttonDefault = parcelHelpers.interopDefault(_button);
+var _listGroup = require("react-bootstrap/ListGroup");
+var _listGroupDefault = parcelHelpers.interopDefault(_listGroup);
+var _row = require("react-bootstrap/Row");
+var _rowDefault = parcelHelpers.interopDefault(_row);
+var _col = require("react-bootstrap/Col");
+var _colDefault = parcelHelpers.interopDefault(_col);
+var _bookListScss = require("./book-list.scss");
+const BookList = ({ book  })=>{
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _listGroupDefault.default), {
+        variant: "flush",
+        className: "list-group",
+        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _listGroupDefault.default).Item, {
+            as: "li",
+            className: "d-flex justify-content-between align-items-start list",
+            children: [
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                    className: "ms-2 me-auto",
+                    children: [
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                            className: "fw-bold",
+                            children: book.title
+                        }, void 0, false, {
+                            fileName: "src/components/book-list/book-list.jsx",
+                            lineNumber: 19,
+                            columnNumber: 11
+                        }, undefined),
+                        book.author
+                    ]
+                }, void 0, true, {
+                    fileName: "src/components/book-list/book-list.jsx",
+                    lineNumber: 18,
+                    columnNumber: 9
+                }, undefined),
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _buttonDefault.default), {
+                    className: "button",
+                    bg: "primary",
+                    children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("i", {
+                        class: "fi fi-rr-headphones"
+                    }, void 0, false, {
+                        fileName: "src/components/book-list/book-list.jsx",
+                        lineNumber: 23,
+                        columnNumber: 11
+                    }, undefined)
+                }, void 0, false, {
+                    fileName: "src/components/book-list/book-list.jsx",
+                    lineNumber: 22,
+                    columnNumber: 9
+                }, undefined),
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _buttonDefault.default), {
+                    className: "button",
+                    bg: "primary",
+                    children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("i", {
+                        class: "fi fi-rr-heart"
+                    }, void 0, false, {
+                        fileName: "src/components/book-list/book-list.jsx",
+                        lineNumber: 26,
+                        columnNumber: 11
+                    }, undefined)
+                }, void 0, false, {
+                    fileName: "src/components/book-list/book-list.jsx",
+                    lineNumber: 25,
+                    columnNumber: 9
+                }, undefined),
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _buttonDefault.default), {
+                    className: "button",
+                    bg: "primary",
+                    children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("i", {
+                        class: "fi fi-rr-heart"
+                    }, void 0, false, {
+                        fileName: "src/components/book-list/book-list.jsx",
+                        lineNumber: 29,
+                        columnNumber: 11
+                    }, undefined)
+                }, void 0, false, {
+                    fileName: "src/components/book-list/book-list.jsx",
+                    lineNumber: 28,
+                    columnNumber: 9
+                }, undefined)
+            ]
+        }, void 0, true, {
+            fileName: "src/components/book-list/book-list.jsx",
+            lineNumber: 15,
+            columnNumber: 7
+        }, undefined)
+    }, void 0, false, {
+        fileName: "src/components/book-list/book-list.jsx",
+        lineNumber: 14,
+        columnNumber: 5
+    }, undefined);
+};
+_c = BookList;
+BookList.propTypes = {
+    book: (0, _propTypesDefault.default).shape({
+        image: (0, _propTypesDefault.default).string,
+        title: (0, _propTypesDefault.default).string.isRequired,
+        author: (0, _propTypesDefault.default).string.isRequired,
+        genre: (0, _propTypesDefault.default).string,
+        series: (0, _propTypesDefault.default).string,
+        number: (0, _propTypesDefault.default).number,
+        description: (0, _propTypesDefault.default).string,
+        owned: (0, _propTypesDefault.default).bool,
+        // availability: PropTypes.array,
+        read: (0, _propTypesDefault.default).bool,
+        favorite: (0, _propTypesDefault.default).bool
+    }).isRequired
+} // Uicons by <a href="https://www.flaticon.com/uicons">Flaticon</a>
+;
+var _c;
+$RefreshReg$(_c, "BookList");
+
+  $parcel$ReactRefreshHelpers$ac93.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","prop-types":"7wKI2","react-bootstrap/Badge":"eEyks","react-bootstrap/ListGroup":"4tGXh","./book-list.scss":"aBRsG","@parcel/transformer-js/src/esmodule-helpers.js":"gdXVH","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"89fB0","react-bootstrap/Button":"aPzUt","react-bootstrap/Row":"cMC39","react-bootstrap/Col":"2L2I6"}],"aBRsG":[function() {},{}],"6u6eS":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$1e99 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -46494,7 +46624,7 @@ $RefreshReg$(_c, "BookView");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","@parcel/transformer-js/src/esmodule-helpers.js":"gdXVH","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"89fB0","./book-view.scss":"9EuXb","react-router":"dbWyW","react-router-dom":"9xmpe","react-bootstrap":"3AD9A"}],"9EuXb":[function() {},{}],"9YtA0":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react-router":"dbWyW","react-router-dom":"9xmpe","react-bootstrap":"3AD9A","./book-view.scss":"9EuXb","@parcel/transformer-js/src/esmodule-helpers.js":"gdXVH","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"89fB0"}],"9EuXb":[function() {},{}],"9YtA0":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$9fee = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -46630,7 +46760,7 @@ $RefreshReg$(_c, "LoginView");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react":"21dqq","./login-view.scss":"e57ax","@parcel/transformer-js/src/esmodule-helpers.js":"gdXVH","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"89fB0","react/jsx-dev-runtime":"iTorj","react-bootstrap/Button":"aPzUt","react-bootstrap/Form":"iBZ80"}],"e57ax":[function() {},{}],"eBaMl":[function() {},{}],"4OGiN":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-bootstrap/Button":"aPzUt","react-bootstrap/Form":"iBZ80","./login-view.scss":"e57ax","@parcel/transformer-js/src/esmodule-helpers.js":"gdXVH","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"89fB0"}],"e57ax":[function() {},{}],"4OGiN":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$73d1 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -46820,7 +46950,7 @@ $RefreshReg$(_c, "SignupView");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react":"21dqq","./signup-view.scss":"6Z19M","@parcel/transformer-js/src/esmodule-helpers.js":"gdXVH","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"89fB0","react/jsx-dev-runtime":"iTorj","react-bootstrap/Button":"aPzUt","react-bootstrap/Form":"iBZ80"}],"6Z19M":[function() {},{}],"bsPVM":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-bootstrap/Button":"aPzUt","react-bootstrap/Form":"iBZ80","./signup-view.scss":"6Z19M","@parcel/transformer-js/src/esmodule-helpers.js":"gdXVH","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"89fB0"}],"6Z19M":[function() {},{}],"bsPVM":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$abf5 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -46842,7 +46972,7 @@ const NavigationBar = ({ user , onLoggedOut  })=>{
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Navbar).Brand, {
                     as: (0, _reactRouterDom.Link),
                     to: "/",
-                    children: "Books App"
+                    children: "My Books App"
                 }, void 0, false, {
                     fileName: "src/components/navigation-bar/navigation-bar.jsx",
                     lineNumber: 8,
@@ -46935,6 +47065,6 @@ $RefreshReg$(_c, "NavigationBar");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react-bootstrap":"3AD9A","react-router-dom":"9xmpe","@parcel/transformer-js/src/esmodule-helpers.js":"gdXVH","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"89fB0"}]},["3XJd6","gaXen","d8Dch"], "d8Dch", "parcelRequire40a1")
+},{"react/jsx-dev-runtime":"iTorj","react-bootstrap":"3AD9A","react-router-dom":"9xmpe","@parcel/transformer-js/src/esmodule-helpers.js":"gdXVH","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"89fB0"}],"eBaMl":[function() {},{}],"lJZlQ":[function() {},{}]},["3XJd6","gaXen","d8Dch"], "d8Dch", "parcelRequire40a1")
 
 //# sourceMappingURL=index.b4b6dfad.js.map
