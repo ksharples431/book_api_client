@@ -15,8 +15,6 @@ export const NavigationBar = ({ user, onLoggedOut }) => {
         <div className="navbar-holder">
           <Navbar key={expand} expand={expand} className="mb-4 navbar">
             <Container fluid>
-
-    
               <Navbar.Toggle
                 aria-controls={`offcanvasNavbar-expand-${expand}`}
               />
@@ -51,23 +49,30 @@ export const NavigationBar = ({ user, onLoggedOut }) => {
               </Nav>
 
               <Navbar.Offcanvas
+              
                 id={`offcanvasNavbar-expand-${expand}`}
                 aria-labelledby={`offcanvasNavbarLabel-expand-${expand}`}
-                placement="start"
-                className="offCanvas">
+                placement="start">
                 <Offcanvas.Header closeButton>
                   <Offcanvas.Title
                     id={`offcanvasNavbarLabel-expand-${expand}`}>
                     My Library
                   </Offcanvas.Title>
                 </Offcanvas.Header>
-                <Offcanvas.Body>
+                <Offcanvas.Body
+                >
                   <Nav className="justify-content-end flex-grow-1 pe-3">
                     <Nav.Link href="/">Home</Nav.Link>
-                    <Nav.Link href="/login">Login</Nav.Link>
-                    <Nav.Link href="/signup">Signup</Nav.Link>
-                    <Nav.Link href="/logout">Logout</Nav.Link>
-                    <Nav.Link href="#action1">Titles</Nav.Link>
+                    <Nav.Link onClick={onLoggedOut} href="/login">
+                      Login
+                    </Nav.Link>
+                    <Nav.Link onClick={onLoggedOut} href="/signup">
+                      Signup
+                    </Nav.Link>
+                    <Nav.Link onClick={onLoggedOut} href="/login">
+                      Logout
+                    </Nav.Link>
+                    <Nav.Link href="/">Titles</Nav.Link>
                     <Nav.Link href="#action2">Authors</Nav.Link>
                     <Nav.Link href="#action2">Series</Nav.Link>
                     <Nav.Link href="#action2">Genre</Nav.Link>
