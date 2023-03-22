@@ -27180,12 +27180,15 @@ const MainView = ()=>{
     const [token, setToken] = (0, _react.useState)(storedToken ? storedToken : null);
     const [books, setBooks] = (0, _react.useState)([]);
     (0, _react.useEffect)(()=>{
-        fetch("https://my-books-series-tracker.herokuapp.com/books", {
-            headers: {
-                Authorization: `Bearer ${token}`
-            }
-        }).then((response)=>response.json()).then((data)=>{
-            const booksFromApi = data.map((book)=>{
+        if (!token) return;
+        async function fetchBooks() {
+            const response = await fetch("https://my-books-series-tracker.herokuapp.com/books", {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            });
+            const data = await response.json();
+            const booksFromAPI = data.map((book)=>{
                 return {
                     id: book._id,
                     image: book.image,
@@ -27196,16 +27199,32 @@ const MainView = ()=>{
                     number: book.number,
                     description: book.description,
                     owned: book.owned,
-                    // availibility: book.availibility,
                     read: book.read,
                     favorite: book.favorite
                 };
             });
-            setBooks(booksFromApi);
-        });
+            setBooks(booksFromAPI);
+        }
+        fetchBooks();
     }, [
         token
     ]);
+    let filteredByAuthor = ()=>books.filter((book)=>book.author === selectedBook.author);
+    let filteredBySeries = ()=>{
+        books.filter((book)=>book.series === selectedBook.series);
+    };
+    let filteredByOwned = ()=>{
+        books.filter((book)=>book.owned === selectedBook.owned);
+    };
+    let filteredByRead = ()=>{
+        books.filter((book)=>book.read === selectedBook.read);
+    };
+    let filteredByFavorite = ()=>{
+        books.filter((book)=>book.favorite === selectedBook.favorite);
+    };
+    let filteredByQue = ()=>{
+        books.filter((book)=>book.que === selectedBook.que);
+    };
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.BrowserRouter), {
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _navigationBar.NavigationBar), {
@@ -27217,7 +27236,7 @@ const MainView = ()=>{
                 }
             }, void 0, false, {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 49,
+                lineNumber: 77,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _rowDefault.default), {
@@ -27236,7 +27255,7 @@ const MainView = ()=>{
                             }, void 0, false)
                         }, void 0, false, {
                             fileName: "src/components/main-view/main-view.jsx",
-                            lineNumber: 58,
+                            lineNumber: 87,
                             columnNumber: 11
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
@@ -27253,7 +27272,7 @@ const MainView = ()=>{
                             }, void 0, false)
                         }, void 0, false, {
                             fileName: "src/components/main-view/main-view.jsx",
-                            lineNumber: 72,
+                            lineNumber: 101,
                             columnNumber: 11
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
@@ -27273,7 +27292,7 @@ const MainView = ()=>{
                             }, void 0, false)
                         }, void 0, false, {
                             fileName: "src/components/main-view/main-view.jsx",
-                            lineNumber: 86,
+                            lineNumber: 115,
                             columnNumber: 11
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
@@ -27292,24 +27311,24 @@ const MainView = ()=>{
                             }, void 0, false)
                         }, void 0, false, {
                             fileName: "src/components/main-view/main-view.jsx",
-                            lineNumber: 102,
+                            lineNumber: 131,
                             columnNumber: 11
                         }, undefined)
                     ]
                 }, void 0, true, {
                     fileName: "src/components/main-view/main-view.jsx",
-                    lineNumber: 57,
+                    lineNumber: 86,
                     columnNumber: 9
                 }, undefined)
             }, void 0, false, {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 56,
+                lineNumber: 85,
                 columnNumber: 7
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 48,
+        lineNumber: 76,
         columnNumber: 5
     }, undefined);
 };
