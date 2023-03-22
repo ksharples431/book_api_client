@@ -6,8 +6,6 @@ import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import Offcanvas from 'react-bootstrap/Offcanvas';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
 import './navigation-bar.scss'
 
 export const NavigationBar = ({ user, onLoggedOut }) => {
@@ -40,9 +38,9 @@ export const NavigationBar = ({ user, onLoggedOut }) => {
                     <Nav.Link as={Link} to="/login">
                       Login
                     </Nav.Link>
-                    {/* <Nav.Link as={Link} to="/signup">
+                    <Nav.Link as={Link} to="/signup">
                       Signup
-                    </Nav.Link> */}
+                    </Nav.Link>
                   </span>
                 )}
                 {user && (
@@ -55,7 +53,8 @@ export const NavigationBar = ({ user, onLoggedOut }) => {
               <Navbar.Offcanvas
                 id={`offcanvasNavbar-expand-${expand}`}
                 aria-labelledby={`offcanvasNavbarLabel-expand-${expand}`}
-                placement="start">
+                placement="start"
+                className="offCanvas">
                 <Offcanvas.Header closeButton>
                   <Offcanvas.Title
                     id={`offcanvasNavbarLabel-expand-${expand}`}>
@@ -64,10 +63,10 @@ export const NavigationBar = ({ user, onLoggedOut }) => {
                 </Offcanvas.Header>
                 <Offcanvas.Body>
                   <Nav className="justify-content-end flex-grow-1 pe-3">
-                    <Nav.Link href="#action2">Home</Nav.Link>
-                    <Nav.Link href="#action2">Login</Nav.Link>
-                    <Nav.Link href="#action2">Signup</Nav.Link>
-                    <Nav.Link href="#action2">Logout</Nav.Link>
+                    <Nav.Link href="/">Home</Nav.Link>
+                    <Nav.Link href="/login">Login</Nav.Link>
+                    <Nav.Link href="/signup">Signup</Nav.Link>
+                    <Nav.Link href="/logout">Logout</Nav.Link>
                     <Nav.Link href="#action1">Titles</Nav.Link>
                     <Nav.Link href="#action2">Authors</Nav.Link>
                     <Nav.Link href="#action2">Series</Nav.Link>
