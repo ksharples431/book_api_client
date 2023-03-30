@@ -30,9 +30,7 @@ BookCard.propTypes = {
     number: PropTypes.number,
     description: PropTypes.string,
     owned: PropTypes.bool,
-    // availability: PropTypes.array,
     read: PropTypes.bool,
     favorite: PropTypes.bool,
-  }).isRequired,
-  onBookClick: PropTypes.func.isRequired,
+  }).isRequired
 };

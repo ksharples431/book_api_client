@@ -33,9 +33,6 @@ export const MainView = () => {
             series: book.series,
             number: book.number,
             description: book.description,
-            owned: book.owned,
-            // availibility: book.availibility,
-            read: book.read,
             favorite: book.favorite,
           };
         });
@@ -51,7 +48,8 @@ export const MainView = () => {
           setUser(null);
           setToken(null);
           localStorage.clear();
-        }}/>
+        }}
+      />
       <Row className="justify-content-md-center">
         <Routes>
           <Route
@@ -109,8 +107,8 @@ export const MainView = () => {
                 ) : (
                   <>
                     {books.map((book) => (
-                      <Col className="mb-4" key={book.id} md={3}>
-                        <BookCard book={book} />
+                      <Col className="mb-4" md={3}>
+                        <BookCard book={book} key={book.id} />
                       </Col>
                     ))}
                   </>
