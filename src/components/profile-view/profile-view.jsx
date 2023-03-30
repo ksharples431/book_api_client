@@ -15,11 +15,11 @@ export const ProfileView = (
   const [password, setPassword] = useState('');
   const [birthday, setBirthday] = useState('');
 
-  let favorites = books.filter((book) =>
-    user.favoriteBooks.includes(book.id)
-  );
-
-  const updateUser = (e) => {
+  // let favorites = books.filter((book) =>
+  //   user.favorites.includes(book._id)
+  // );
+  console.log(user)
+  const setUser = (e) => {
     e.preventDefault();
 
     const data = {
