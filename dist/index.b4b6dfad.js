@@ -47280,6 +47280,6 @@ $RefreshReg$(_c, "BookList");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","prop-types":"7wKI2","react-bootstrap/Button":"aPzUt","react-bootstrap/ListGroup":"4tGXh","./book-list.scss":"aBRsG","@parcel/transformer-js/src/esmodule-helpers.js":"gdXVH","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"89fB0","react-router-dom":"9xmpe"}],"aBRsG":[function() {},{}],"lJZlQ":[function() {},{}]},["3XJd6","gaXen","d8Dch"], "d8Dch", "parcelRequire40a1")
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","prop-types":"7wKI2","react-bootstrap/Button":"aPzUt","react-bootstrap/ListGroup":"4tGXh","react-router-dom":"9xmpe","./book-list.scss":"aBRsG","@parcel/transformer-js/src/esmodule-helpers.js":"gdXVH","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"89fB0"}],"aBRsG":[function() {},{}],"lJZlQ":[function() {},{}]},["3XJd6","gaXen","d8Dch"], "d8Dch", "parcelRequire40a1")
 
 //# sourceMappingURL=index.b4b6dfad.js.map
