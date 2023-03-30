@@ -61,7 +61,7 @@ export const MainView = () => {
                   <Navigate to="/" />
                 ) : (
                   <Col md={5}>
-                    <SignupView key={signup} />
+                    <SignupView />
                   </Col>
                 )}
               </>
@@ -75,7 +75,7 @@ export const MainView = () => {
                   <Navigate to="/" />
                 ) : (
                   <Col md={5}>
-                    <LoginView onLoggedIn={(user) => setUser(user)} key={login} />
+                    <LoginView onLoggedIn={(user) => setUser(user)} />
                   </Col>
                 )}
               </>
@@ -91,7 +91,7 @@ export const MainView = () => {
                   <Col>The list is empty!</Col>
                 ) : (
                   <Col md={8}>
-                    <BookView books={books} key={books}/>
+                    <BookView books={books} />
                   </Col>
                 )}
               </>
@@ -109,7 +109,7 @@ export const MainView = () => {
                   <>
                     {books.map((book) => (
                       <Col className="mb-4" md={3}>
-                        <BookCard book={book} key={book.id} />
+                        <BookCard book={book} />
                       </Col>
                     ))}
                   </>
@@ -125,7 +125,7 @@ export const MainView = () => {
                   <Navigate to="/login" replace />
                 ) : (
                   <Col md={8}>
-                    <ProfileView user={user} key={user}/>
+                    <ProfileView user={user}/>
                   </Col>
                 )}
               </>

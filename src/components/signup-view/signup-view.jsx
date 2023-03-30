@@ -14,10 +14,10 @@ export const SignupView = ({ onLoggedIn }) => {
     event.preventDefault();
 
     const data = {
-      Username: username,
-      Password: password,
-      Email: email,
-      Birthday: birthday
+      username,
+      password,
+      email,
+      birthday
     };
 
     fetch('https://my-books-series-tracker.herokuapp.com/users', {
